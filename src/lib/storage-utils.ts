@@ -1,3 +1,4 @@
+import { apiRequest } from "./queryClient";
 import { supabase } from "./supabase";
 
 /**
@@ -79,7 +80,7 @@ export async function uploadFile(
 
     // 3. Save metadata to DB (via our API or Supabase direct)
     // For now, we still use our API but with the URL instead of file data
-    const response = await fetch('/api/resources', {
+    const response = await apiRequest('POST', '/api/resources', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,10 +117,8 @@ export async function uploadFile(
 export async function deleteResource(id: number, storagePath?: string): Promise<void> {
   try {
     // 1. Delete from database
-    const response = await fetch(`/api/resources/${id}`, {
-      method: 'DELETE',
-    });
-
+    const response = await apiRequest('DELETE', `/api/resources/${id}`);
+    
     if (!response.ok) {
       throw new Error('Failed to delete metadata from database');
     }

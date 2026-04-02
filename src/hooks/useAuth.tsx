@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 import { User } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabase";
 import { useToast } from "./use-toast";
+import { apiRequest } from "../lib/queryClient";
 
 // Auth context type definition
 export interface AuthContextType {
@@ -30,7 +31,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const initAuth = async () => {
       try {
         // 1. Check if we have a backend session first (higher priority for admin)
-        const response = await fetch("/api/user");
+        const response = await apiRequest("GET", "/api/user");
         if (response.ok) {
           const userData = await response.json();
           setUser(userData);
@@ -69,11 +70,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const loginWithCredentials = async (username: string, password: string) => {
     try {
       setLoading(true);
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await apiRequest("POST", "/api/login", { username, password });
 
       if (!response.ok) {
         const data = await response.json();
@@ -128,7 +125,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       
       // If it's a backend user, call backend logout
       if (user?.username) {
-        await fetch("/api/logout", { method: "POST" });
+        await apiRequest("POST", "/api/logout");
       }
 
       // Always clear Supabase session too

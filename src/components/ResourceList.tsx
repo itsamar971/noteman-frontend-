@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import ResourceItem from "@/components/ResourceItem";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookOpen, FileText, Zap } from "lucide-react";
@@ -38,9 +39,10 @@ export default function ResourceList({ semester, branch, subject }: ResourceList
 
   const { data: resources, isLoading, error } = useQuery({
     queryKey: ["/api/resources/filter", { semester, branch, subject }],
-    queryFn: () =>
-      fetch(`/api/resources/filter?semester=${encodeURIComponent(semester)}&branch=${encodeURIComponent(branch)}&subject=${encodeURIComponent(subject)}`)
-        .then(r => r.json()),
+    queryFn: () => {
+      const url = `/api/resources/filter?semester=${encodeURIComponent(semester)}&branch=${encodeURIComponent(branch)}&subject=${encodeURIComponent(subject)}`;
+      return apiRequest("GET", url).then(r => r.json());
+    },
   });
 
   useEffect(() => {

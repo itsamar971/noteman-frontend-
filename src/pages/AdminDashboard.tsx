@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocation } from "wouter";
 import {
@@ -39,17 +40,12 @@ export default function AdminDashboard() {
 
   const { data: trending, isLoading: trendingLoading } = useQuery<any[]>({
     queryKey: ["/api/analytics/top"],
-    queryFn: async () => {
-      const r = await fetch("/api/analytics/top?limit=5");
-      if (!r.ok) return [];
-      const data = await r.json();
-      return Array.isArray(data) ? data : [];
-    },
+    queryFn: () => apiRequest("GET", "/api/analytics/top?limit=5").then(r => r.json()),
     enabled: !loading && isAdmin,
   });
   const { data: allResources, isLoading: statsLoading } = useQuery<any[]>({
     queryKey: ["/api/resources"],
-    queryFn: () => fetch("/api/resources").then(r => r.json()),
+    queryFn: () => apiRequest("GET", "/api/resources").then((r) => r.json()),
     enabled: !loading && isAdmin,
   });
 

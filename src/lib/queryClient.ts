@@ -7,12 +7,25 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
+/**
+ * Prepends the API_URL to a relative path if it's not already a full URL.
+ */
+function getFullUrl(url: string): string {
+  if (url.startsWith("http")) return url;
+  // Ensure the relative URL starts with /
+  const path = url.startsWith("/") ? url : `/${url}`;
+  return `${API_URL}${path}`;
+}
+
 export async function apiRequest(
   method: string,
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
+  const fullUrl = getFullUrl(url);
+  const res = await fetch(fullUrl, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
@@ -29,7 +42,9 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey[0] as string, {
+    const url = queryKey[0] as string;
+    const fullUrl = getFullUrl(url);
+    const res = await fetch(fullUrl, {
       credentials: "include",
     });
 
