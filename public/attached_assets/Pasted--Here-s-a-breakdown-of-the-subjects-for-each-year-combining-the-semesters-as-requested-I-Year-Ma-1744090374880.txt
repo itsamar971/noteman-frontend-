@@ -1,0 +1,83 @@
+
+Here's a breakdown of the subjects for each year, combining the semesters as requested:
+
+I Year
+
+Matrices and Calculus    
+Engineering Chemistry    
+Programming for Problem Solving    
+Basic Electrical Engineering    
+Computer Aided Engineering Graphics    
+Elements of Computer Science & Engineering    
+Engineering Chemistry Laboratory    
+Programming for Problem Solving Laboratory    
+Basic Electrical Engineering Laboratory    
+Ordinary Differential Equations and Vector Calculus    
+Applied Physics    
+Engineering Workshop    
+English for Skill Enhancement    
+Electronic Devices and Circuits    
+Python Programming Laboratory    
+Applied Physics Laboratory    
+English Language and Communication Skills Laboratory    
+IT Workshop    
+Environmental Science    
+II Year
+
+Digital Electronics    
+Data Structures    
+Computer Oriented Statistical Methods    
+Computer Organization and Architecture    
+Object Oriented Programming through Java    
+Data Structures Lab    
+Object Oriented Programming through Java Lab    
+Data visualization- R Programming/ Power BI    
+Gender Sensitization Lab    
+Discrete Mathematics    
+Business Economics & Financial Analysis    
+Operating Systems    
+Database Management Systems    
+Software Engineering    
+Operating Systems Lab    
+Database Management Systems Lab    
+Real-time Research Project/ Societal Related Project    
+Node JS/ React JS/ Django    
+Constitution of India    
+III Year
+
+Design and Analysis of Algorithms    
+Computer Networks    
+DevOps    
+Professional Elective-l    
+Professional Elective -II    
+Computer Networks Lab    
+DevOps Lab    
+Advanced English Communication Skills Lab    
+UI design- Flutter    
+Intellectual Property Rights    
+Machine Learning    
+Formal Languages and Automata Theory    
+Artificial Intelligence    
+Professional Elective - III    
+Open Elective-l    
+Machine Learning Lab    
+Artificial Intelligence Laboratory    
+Professional Elective-III Lab    
+Industrial Oriented Mini Project/ Internship/ Skill Development Course (Big data-Spark)    
+Environmental Science    
+IV Year
+
+Cryptography and Network Security    
+Compiler Design    
+Professional Elective -IV    
+Professional Elective -V    
+Open Elective - II    
+Cryptography and Network Security Lab    
+Compiler Design Lab    
+Project Stage - I    
+Organizational Behavior    
+Professional Elective - VI    
+Open Elective - III    
+Project Stage - II including Seminar    
+
+Sources and related content

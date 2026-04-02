@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* D'Festa 2K26 Light Tokens */
+    --background: 0 0% 99%;         /* #FCFCFD */
+    --foreground: 240 10% 4%;       /* #09090B */
+    --popover: 0 0% 99%;
+    --popover-foreground: 240 10% 4%;
+    --card: 240 5% 96%;             /* #F4F4F5 */
+    --card-foreground: 240 10% 4%;
+    --border: 240 6% 90%;           /* #E4E4E7 */
+    --input: 240 6% 90%;
+    --primary: 239 84% 67%;         /* #6366F1 Indigo */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 4%;
+    --accent: 271 91% 65%;          /* #A855F7 Purple */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;       /* #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+    --ring: 239 84% 67%;
+    --radius: 1rem;
+
+    /* Brand tokens */
+    --brand-indigo: #6366F1;
+    --brand-indigo-light: #818CF8;
+    --brand-purple: #A855F7;
+    --brand-emerald: #10B981;
+    --brand-amber: #F59E0B;
+    --brand-red: #EF4444;
+    --surface-dark: #09090B;
+    --surface-card: #18181B;
+    --border-dark: #27272A;
+    --surface-light: #FCFCFD;
+    --surface-light-2: #F4F4F5;
+    --border-light: #E4E4E7;
+  }
+
+  .dark {
+    --background: 240 10% 4%;       /* #09090B */
+    --foreground: 0 0% 99%;
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 99%;
+    --card: 240 5% 11%;             /* #18181B */
+    --card-foreground: 0 0% 99%;
+    --border: 240 4% 16%;           /* #27272A */
+    --input: 240 4% 16%;
+    --primary: 234 89% 74%;         /* #818CF8 */
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 99%;
+    --accent: 271 91% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 99%;
+    --ring: 234 89% 74%;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image:
+      radial-gradient(ellipse 80% 40% at 50% -10%, rgba(99,102,241,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 20% at 80% 100%, rgba(168,85,247,0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(99,102,241,0.2);
+    color: #6366F1;
+  }
+}
+
+@layer utilities {
+  /* ===================== GLASS CARDS ===================== */
+  .glass-card {
+    @apply bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md
+           border border-zinc-200/60 dark:border-zinc-800
+           shadow-sm transition-all duration-500 relative overflow-hidden;
+  }
+
+  .glass-card:hover {
+    @apply bg-white dark:bg-zinc-900/80
+           border-indigo-500/30 dark:border-indigo-500/30
+           shadow-xl shadow-indigo-500/10 -translate-y-0.5;
+  }
+
+  /* ===================== GLOW BLOB ===================== */
+  .glow-blob {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  /* ===================== GRADIENTS ===================== */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+  }
+
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+  }
+
+  /* ===================== EYEBROW LABELS ===================== */
+  .eyebrow {
+    @apply text-[9px] font-black uppercase tracking-[0.35em] text-indigo-600 dark:text-indigo-400
+           flex items-center gap-1.5;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #6366F1;
+    box-shadow: 0 0 6px rgba(99,102,241,0.6);
+    flex-shrink: 0;
+  }
+
+  /* ===================== BADGES ===================== */
+  .badge-indigo {
+    @apply text-[8px] font-black uppercase tracking-widest
+           bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400
+           px-2 py-0.5 rounded-full;
+  }
+
+  .badge-emerald {
+    @apply text-[8px] font-black uppercase tracking-widest
+           bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400
+           px-2 py-0.5 rounded-full;
+  }
+
+  .badge-amber {
+    @apply text-[8px] font-black uppercase tracking-widest
+           bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400
+           px-2 py-0.5 rounded-full;
+  }
+
+  /* ===================== STAT CARDS ===================== */
+  .stat-card {
+    @apply bg-white dark:bg-zinc-900/60 backdrop-blur-sm
+           border border-zinc-200 dark:border-zinc-800
+           rounded-3xl p-6 relative overflow-hidden
+           transition-all duration-300 hover:-translate-y-0.5
+           hover:shadow-lg hover:shadow-indigo-500/5
+           hover:border-indigo-500/20 dark:hover:border-indigo-500/30;
+  }
+
+  /* ===================== PREMIUM INPUTS ===================== */
+  .input-dfesta {
+    @apply bg-zinc-50 dark:bg-zinc-950
+           border border-zinc-200 dark:border-zinc-800
+           rounded-xl h-12 px-4
+           text-sm font-bold uppercase tracking-wide
+           text-zinc-900 dark:text-white
+           placeholder:text-zinc-400 placeholder:font-normal placeholder:normal-case placeholder:tracking-normal
+           focus:border-indigo-500/50 focus:outline-none
+           transition-colors duration-200;
+  }
+
+  /* ===================== PREMIUM BUTTONS ===================== */
+  .btn-primary {
+    @apply bg-zinc-950 dark:bg-white
+           text-white dark:text-zinc-950
+           font-black uppercase tracking-wide text-xs
+           px-6 h-11 rounded-xl
+           transition-all duration-200
+           hover:bg-black dark:hover:bg-zinc-100
+           hover:-translate-y-px hover:shadow-lg hover:shadow-zinc-900/20
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-brand {
+    @apply bg-brand-gradient text-white
+           font-black uppercase tracking-wide text-xs
+           px-6 h-11 rounded-xl
+           transition-all duration-200
+           hover:-translate-y-px hover:shadow-lg hover:shadow-indigo-500/25
+           active:scale-[0.98];
+  }
+
+  /* ===================== ANIMATIONS ===================== */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.06; transform: scale(1); }
+    50%       { opacity: 0.12; transform: scale(1.05); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-float      { animation: float 6s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+  .animate-spin-slow  { animation: spin-slow 8s linear infinite; }
+  .animate-slide-up   { animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  /* Stagger helpers */
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.10s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.20s; }
+  .stagger-5 { animation-delay: 0.25s; }
+
+  /* ===================== AMBIENT BG ===================== */
+  .ambient-bg {
+    @apply pointer-events-none absolute top-0 left-0 right-0 h-[600px] -z-10;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(99,102,241,0.06) 0%, transparent 70%);
+  }
+
+  /* ===================== CODE / ID PILLS ===================== */
+  .id-pill {
+    @apply font-mono text-xs font-bold
+           bg-indigo-500/10 text-indigo-600 dark:text-indigo-400
+           px-2 py-0.5 rounded-full border border-indigo-500/20;
+  }
+
+  /* ===================== SECTION LAYOUT ===================== */
+  .section-gap { @apply space-y-16; }
+  .card-gap    { @apply space-y-6; }
+  .content-pad { @apply px-6 lg:px-12 max-w-7xl mx-auto; }
+}

@@ -1,0 +1,1477 @@
+
+Here's a breakdown of the subjects for each year, combining the semesters as requested:
+
+I Year
+
+Matrices and Calculus    
+Engineering Chemistry    
+Programming for Problem Solving    
+Basic Electrical Engineering    
+Computer Aided Engineering Graphics    
+Elements of Computer Science & Engineering    
+Engineering Chemistry Laboratory    
+Programming for Problem Solving Laboratory    
+Basic Electrical Engineering Laboratory    
+Ordinary Differential Equations and Vector Calculus    
+Applied Physics    
+Engineering Workshop    
+English for Skill Enhancement    
+Electronic Devices and Circuits    
+Python Programming Laboratory    
+Applied Physics Laboratory    
+English Language and Communication Skills Laboratory    
+IT Workshop    
+Environmental Science    
+II Year
+
+Digital Electronics    
+Data Structures    
+Computer Oriented Statistical Methods    
+Computer Organization and Architecture    
+Object Oriented Programming through Java    
+Data Structures Lab    
+Object Oriented Programming through Java Lab    
+Data visualization- R Programming/ Power BI    
+Gender Sensitization Lab    
+Discrete Mathematics    
+Business Economics & Financial Analysis    
+Operating Systems    
+Database Management Systems    
+Software Engineering    
+Operating Systems Lab    
+Database Management Systems Lab    
+Real-time Research Project/ Societal Related Project    
+Node JS/ React JS/ Django    
+Constitution of India    
+III Year
+
+Design and Analysis of Algorithms    
+Computer Networks    
+DevOps    
+Professional Elective-l    
+Professional Elective -II    
+Computer Networks Lab    
+DevOps Lab    
+Advanced English Communication Skills Lab    
+UI design- Flutter    
+Intellectual Property Rights    
+Machine Learning    
+Formal Languages and Automata Theory    
+Artificial Intelligence    
+Professional Elective - III    
+Open Elective-l    
+Machine Learning Lab    
+Artificial Intelligence Laboratory    
+Professional Elective-III Lab    
+Industrial Oriented Mini Project/ Internship/ Skill Development Course (Big data-Spark)    
+Environmental Science    
+IV Year
+
+Cryptography and Network Security    
+Compiler Design    
+Professional Elective -IV    
+Professional Elective -V    
+Open Elective - II    
+Cryptography and Network Security Lab    
+Compiler Design Lab    
+Project Stage - I    
+Organizational Behavior    
+Professional Elective - VI    
+Open Elective - III    
+Project Stage - II including Seminar    
+
+Sources and related content
+R22B.Tech....eSyllabus2
+
+PDF
+
+
+
+
+Your uploads may be too large for the best results. Learn more
+keep title ces subjects
+
+
+
+Analysis
+Certainly! Here are the subject titles for each year, specifically focusing on the Computer Science and Engineering (CSE) subjects:
+
+I Year
+
+Elements of Computer Science & Engineering    
+Programming for Problem Solving    
+Programming for Problem Solving Laboratory    
+IT Workshop    
+Python Programming Laboratory    
+II Year
+
+Digital Electronics    
+Data Structures    
+Computer Organization and Architecture    
+Object Oriented Programming through Java    
+Data Structures Lab    
+Object Oriented Programming through Java Lab    
+Data visualization- R Programming/ Power BI    
+Discrete Mathematics    
+Operating Systems    
+Database Management Systems    
+Software Engineering    
+Operating Systems Lab    
+Database Management Systems Lab    
+Real-time Research Project/ Societal Related Project    
+Node JS/ React JS/ Django    
+III Year
+
+Design and Analysis of Algorithms    
+Computer Networks    
+DevOps    
+Computer Networks Lab    
+DevOps Lab    
+UI design- Flutter    
+Machine Learning    
+Formal Languages and Automata Theory    
+Artificial Intelligence    
+Machine Learning Lab    
+Artificial Intelligence Laboratory    
+Industrial Oriented Mini Project/ Internship/ Skill Development Course (Big data-Spark)    
+IV Year
+
+Cryptography and Network Security    
+Compiler Design    
+Cryptography and Network Security Lab    
+Compiler Design Lab    
+Project Stage - I    
+Project Stage - II including Seminar    
+
+Sources and related content
+R22B.Tech....eSyllabus2
+
+PDF
+
+
+
+
+
+R22B.Tech....veSyllabus
+PDF
+from this files extract the subjects for each year year means combine 2 sems
+
+
+
+Analysis
+Here are the subjects for each year as extracted from the document, keeping in mind that "year" combines two semesters:
+
+I Year
+
+Matrices and Calculus    
+
+Applied Physics    
+
+C Programming for Engineers    
+
+Engineering Workshop    
+
+English for Skill Enhancement    
+
+Elements of Electronics and Communication Engineering    
+
+Applied Physics Laboratory    
+
+English Language and Communication Skills Laboratory    
+
+C Programming for Engineers Laboratory    
+
+Environmental Science    
+
+Induction Programme    
+
+Ordinary Differential Equations and Vector Calculus    
+
+Engineering Chemistry    
+
+Computer Aided Engineering Graphics    
+
+Basic Electrical Engineering    
+
+Electronic Devices and Circuits    
+
+Applied Python Programming Laboratory    
+
+Engineering Chemistry Laboratory    
+
+Basic Electrical Engineering Laboratory    
+
+Electronic Devices and Circuits Laboratory    
+
+II Year
+
+Analog Circuits    
+
+Network analysis and Synthesis    
+
+Digital Logic Design    
+
+Signals and Systems    
+
+Probability Theory and Stochastic Processes    
+
+Analog Circuits Laboratory    
+
+Digital logic Design Laboratory    
+
+Basic Simulation Laboratory    
+
+Constitution of India    
+
+Numerical Methods and Complex Variables    
+
+Electromagnetic Fields and Transmission Lines    
+
+Analog and Digital Communications    
+
+Linear and Digital IC Applications    
+
+Electronic Circuit Analysis    
+
+Analog and Digital Communications Laboratory    
+
+Linear and Digital IC Applications Laboratory    
+
+Electronic Circuit Analysis Laboratory    
+
+Real Time Project/ Field Based Project    
+
+Gender Sensitization Lab    
+
+III Year
+
+Microcontrollers    
+
+IoT Architectures and Protocols    
+
+Control Systems    
+
+Business Economics & Financial Analysis    
+
+Professional Elective - I    
+
+Microcontrollers Laboratory    
+
+IoT Architectures and Protocols Laboratory    
+
+Advanced English Communication Skills Laboratory    
+
+Intellectual Property Rights    
+
+Antennas and Wave Propagation    
+
+Digital Signal Processing    
+
+CMOS VLSI Design    
+
+Professional Elective - II    
+
+Open Elective - I    
+
+Digital Signal Processing Laboratory    
+
+CMOS VLSI Design Laboratory    
+
+Advanced Communication Laboratory    
+
+Industry Oriented Mini Project/ Internship    
+
+Environmental Science    
+
+IV Year
+
+Microwave and Optical Communications    
+
+Professional Elective - III    
+
+Professional Elective - IV    
+
+Open Elective - II    
+
+Professional Practice, Law & Ethics    
+
+Microwave and Optical Communications Laboratory    
+
+Project Stage - I    
+
+Professional Elective - V    
+
+Professional Elective - VI    
+
+Open Elective - III    
+
+Project Stage - II including Seminar    
+
+
+Sources and related content
+R22B.Tech....veSyllabus
+
+PDF
+
+
+
+
+Your uploads may be too large for the best results. Learn more
+
+R22B.Tech....eSyllabus1
+PDF
+from this files extract the subjects for each year year means combine 2 sems
+
+
+
+Analysis
+Here are the subjects for each year, combining the semesters, as extracted from the document:
+
+I Year
+
+Matrices and Calculus    
+
+Engineering Chemistry    
+
+C Programming and Data Structures    
+
+Electrical Circuit Analysis - I    
+
+Computer Aided Engineering Graphics    
+
+Elements of Electrical and Electronics Engineering    
+
+Engineering Chemistry Laboratory    
+
+C Programming and Data Structures Laboratory    
+
+Ordinary Differential Equations and Vector Calculus    
+
+Applied Physics    
+
+Engineering Workshop    
+
+English for Skill Enhancement    
+
+Electrical Circuit Analysis - II    
+
+Applied Python Programming Laboratory    
+
+Applied Physics Laboratory    
+
+English Language and Communication Skills Laboratory    
+
+Electrical Circuit Analysis Laboratory    
+
+Environmental Science    
+
+II Year
+
+Numerical Methods and Complex variables    
+
+Electrical Machines-I    
+
+Power System-l    
+
+Analog Electronic Circuits    
+
+Electro Magnetic Fields    
+
+Electrical Machines Laboratory-l    
+
+Analog Electronic Circuits Laboratory    
+
+Electrical Simulation tools Laboratory    
+
+Gender Sensitization Laboratory    
+
+Solid Mechanics & Hydraulic Machines    
+
+Measurements and Instrumentation    
+
+Electrical Machines-II    
+
+Digital Electronics    
+
+Power System-II    
+
+Digital Electronics Laboratory    
+
+Measurements and Instrumentation Laboratory    
+
+Electrical Machines Laboratory-II    
+
+Real-time Research Project/ Field Based Project    
+
+Constitution of India    
+
+III Year
+
+Power Electronics    
+
+Control Systems    
+
+Microprocessors & Microcontrollers    
+
+Professional Elective-l    
+
+Business Economics and Financial Analysis    
+
+Microprocessors & Microcontrollers Laboratory    
+
+Power Electronics Laboratory    
+
+Advanced English Communication Skills Laboratory    
+
+Intellectual Property Rights    
+
+Open Elective-l    
+
+Professional Elective-II    
+
+Digital Signal Processing    
+
+Power System Protection    
+
+Power System Operation and Control    
+
+Power System Laboratory    
+
+Control Systems Laboratory    
+
+Digital Signal Processing Lab    
+
+Industry Oriented Mini Project/ Internship    
+
+Environmental Science    
+
+IV Year
+
+Power Electronic Applications to Renewable Energy Systems    
+
+Open Elective-ll    
+
+Professional Elective-III    
+
+Professional Elective-IV    
+
+Fundamentals of Management for Engineers    
+
+Simulation of Renewable Energy Systems Laboratory    
+
+Project Stage - I    
+
+Open Elective-III    
+
+Professional ElectiveV-    
+
+Professional Elective-VI    
+
+Project Stage - II including Seminar    
+
+
+Sources and related content
+R22B.Tech....eSyllabus1
+
+PDF
+
+
+
+
+Your uploads may be too large for the best results. Learn more
+
+Met.Engg.B.Tech.R22
+PDF
+
+R13B.Tech.Biotech
+PDF
+
+R22B.Tech....reSyllabus
+PDF
+
+R22B.Tech....eSyllabus2
+PDF
+
+R22B.Tech....veSyllabus
+PDF
+
+R22B.Tech....eSyllabus1
+PDF
+
+R22B.Tech....arSyllabus
+PDF
+
+from this files extract the subjects for each year year means combine 2 sems but give as diff branches and make them to pdf
+
+
+
+Analysis
+Okay, I'll extract the subject information for each year from the provided files, organize it by branch, and present it in a way that you can easily copy into a PDF.
+
+Note: There might be slight variations in how "year" is interpreted in the documents (some might explicitly say I & II semester subjects constitute a year, while others might just list them). I'll stick to combining subjects based on their appearance under "I Year," "II Year," etc.
+
+Here's the breakdown:
+
+1. Metallurgical Engineering    
+
+I Year
+
+Matrices and Calculus
+
+Engineering Chemistry
+
+Programming for Problem Solving
+
+Basic Electrical Engineering
+
+Computer Aided Engineering Graphics
+
+Elements of Computer Science & Engineering
+
+Engineering Chemistry Laboratory
+
+Programming for Problem Solving Laboratory
+
+Basic Electrical Engineering Laboratory
+
+Ordinary Differential Equations and Vector Calculus
+
+Applied Physics
+
+Engineering Workshop
+
+English for Skill Enhancement
+
+Electronic Devices and Circuits
+
+Python Programming Laboratory
+
+Applied Physics Laboratory
+
+English Language and Communication Skills Laboratory
+
+IT Workshop
+
+Environmental Science
+
+II Year
+
+Material Science and Metallurgy
+
+Metallurgical Thermodynamics & Kinetics
+
+Fuels, Refractories & Pyrometry
+
+Mineral Processing
+
+Engineering Mathematics
+
+Material Testing Laboratory
+
+Metallurgical Thermodynamics Laboratory
+
+Mineral Processing Laboratory
+
+Constitution of India
+
+Non-Ferrous Extractive Metallurgy
+
+Iron Making
+
+Heat Treatment
+
+Transport Phenomena
+
+Non-Ferrous Extractive Metallurgy Laboratory
+
+Iron Making Laboratory
+
+Heat Treatment Laboratory
+
+Quantitative Metallography Lab
+
+Gender Sensitization Lab
+
+III Year
+
+Physical Metallurgy
+
+Steel Making
+
+Deformation of Materials
+
+Professional Elective - I
+
+Physical Metallurgy Laboratory
+
+Steel Making Laboratory
+
+Simulation Laboratory
+
+Intellectual Property Rights
+
+Ceramics and Composite Materials / Corrosion and Wear / Powder Metallurgy (Professional Elective - I)
+
+Heat Treatment Technology
+
+Welding Technology
+
+Foundry Technology
+
+Professional Elective - II
+
+Open Elective - I
+
+Heat Treatment Technology Lab
+
+Welding Technology Lab
+
+Foundry Technology Lab
+
+Industry Oriented Mini Project/ Internship
+
+Environmental Science
+
+IV Year
+
+Materials Characterization Techniques
+
+Professional Elective - III
+
+Professional Elective - IV
+
+Open Elective - II
+
+Materials Characterization Techniques Lab
+
+Project Stage - I
+
+Professional Elective - V
+
+Professional Elective - VI
+
+Open Elective - III
+
+Project Stage - II including Seminar
+
+High Temperature Materials / Surface Engineering / Advanced Forming Techniques / Biomaterials (Professional Elective - III, IV, V & VI)
+
+2. Bio-Technology    
+
+I Year
+
+English
+
+Mathematics - I
+
+Engineering Physics
+
+Engineering Chemistry
+
+Computer Programming
+
+Engineering Mechanics
+
+Engineering Drawing
+
+English Language Lab
+
+Computer Programming Lab
+
+Engineering Physics Lab
+
+Engineering Chemistry Lab
+
+Mathematics - II
+
+Engineering Graphics
+
+Basic Electrical Engineering
+
+II Year
+
+Probability and Statistics
+
+Applied Mathematics
+
+Biology for Engineers
+
+Basic Organic Chemistry
+
+Biochemistry
+
+Microbiology
+
+Biochemistry Lab
+
+Microbiology Lab
+
+Organic Chemistry Lab
+
+Environmental Studies
+
+Cell Biology
+
+Genetics
+
+Analytical Techniques
+
+Chemical Engineering Principles
+
+Cell Biology Lab
+
+Genetics Lab
+
+Analytical Techniques Lab
+
+Chemical Engineering Principles Lab
+
+III Year
+
+Immunology
+
+Molecular Biology
+
+Bioprocess Engineering - I
+
+Heat Transfer
+
+Immunology Lab
+
+Molecular Biology Lab
+
+Bioprocess Engineering - I Lab
+
+Mass Transfer Operations
+
+Enzyme Technology
+
+Recombinant DNA Technology
+
+Bioprocess Engineering - II
+
+Mass Transfer Operations Lab
+
+Enzyme Technology Lab
+
+Recombinant DNA Technology Lab
+
+Industry Oriented Mini Project
+
+IV Year
+
+Plant Biotechnology
+
+Animal Biotechnology
+
+Pharmaceutical Biotechnology
+
+Elective - I
+
+Plant Biotechnology Lab
+
+Animal Biotechnology Lab
+
+Pharmaceutical Biotechnology Lab
+
+Bioinformatics
+
+Genomics and Proteomics
+
+Bioethics and IPR
+
+Elective - II
+
+Genomics and Proteomics Lab
+
+Bioinformatics Lab
+
+Seminar
+
+Project Work
+
+3. Civil Engineering    
+
+I Year
+
+Matrices and Calculus
+
+Applied Physics
+
+C Programming and Data Structures
+
+Engineering Workshop
+
+English for Skill Enhancement
+
+Elements of Civil Engineering
+
+Applied Physics Laboratory
+
+C Programming and Data Structures Laboratory
+
+English Language and Communication Skills Laboratory
+
+Environmental Science
+
+Ordinary Differential Equations and Vector Calculus
+
+Engineering Chemistry
+
+Computer Aided Engineering Graphics
+
+Applied Mechanics
+
+Surveying
+
+Python Programming Laboratory
+
+Engineering Chemistry Laboratory
+
+Surveying Laboratory - I
+
+II Year
+
+Probability and Statistics
+
+Building Materials, Construction and Planning
+
+Engineering Geology
+
+Strength of Materials - I
+
+Fluid Mechanics
+
+Surveying Laboratory - II
+
+Building Materials and Concrete Technology Laboratory
+
+Fluid Mechanics and Hydraulic Machinery Laboratory
+
+Constitution of India
+
+Structural Analysis
+
+Reinforced Concrete Structures - I
+
+Hydraulics and Hydraulic Machinery
+
+Professional Elective - I
+
+Open Elective - I
+
+Strength of Materials Laboratory
+
+Hydraulic Machinery Laboratory
+
+Advanced Surveying Laboratory
+
+Gender Sensitization Lab
+
+III Year
+
+Design of Reinforced Concrete Structures
+
+Geotechnical Engineering
+
+Hydrology and Water Resources Engineering
+
+Transportation Engineering
+
+Environmental Engineering   
+
+Concrete Technology Laboratory
+
+Geotechnical Engineering Laboratory
+
+Computer Aided Design Laboratory
+
+Intellectual Property Rights
+
+Structural Engineering
+
+Water Resources Engineering
+
+Design of Steel Structures
+
+Professional Elective - II
+
+Open Elective - II
+
+Advanced English Communication Skills Laboratory
+
+Transportation Engineering Laboratory
+
+Environmental Engineering Laboratory
+
+Industry Oriented Mini Project/ Internship
+
+IV Year
+
+Estimation, Costing and Specifications
+
+Construction Management
+
+Professional Elective - III
+
+Professional Elective - IV
+
+Remote Sensing and GIS
+
+Project Stage - I
+
+Professional Elective - V
+
+Professional Elective - VI
+
+Open Elective - III
+
+Project Stage - II including Seminar
+
+Air Pollution and Control / Water Resources Management / Pavement Materials and Construction / Advanced Structural Analysis / Earthquake Resistant Design of Buildings (Professional Elective - III, IV, V & VI)
+
+4. Computer Science and Engineering    
+
+I Year
+
+Matrices and Calculus
+
+Engineering Chemistry
+
+Programming for Problem Solving
+
+Basic Electrical Engineering
+
+Computer Aided Engineering Graphics
+
+Elements of Computer Science & Engineering
+
+Engineering Chemistry Laboratory
+
+Programming for Problem Solving Laboratory
+
+Basic Electrical Engineering Laboratory
+
+Ordinary Differential Equations and Vector Calculus
+
+Applied Physics
+
+Engineering Workshop
+
+English for Skill Enhancement
+
+Electronic Devices and Circuits
+
+Python Programming Laboratory
+
+Applied Physics Laboratory
+
+English Language and Communication Skills Laboratory
+
+IT Workshop
+
+Environmental Science
+
+II Year
+
+Digital Electronics
+
+Data Structures
+
+Computer Oriented Statistical Methods
+
+Computer Organization and Architecture
+
+Object Oriented Programming through Java
+
+Data Structures Lab
+
+Object Oriented Programming through Java Lab
+
+Data visualization- R Programming/ Power BI
+
+Gender Sensitization Lab
+
+Discrete Mathematics
+
+Business Economics & Financial Analysis
+
+Operating Systems
+
+Database Management Systems
+
+Software Engineering
+
+Operating Systems Lab
+
+Database Management Systems Lab
+
+Real-time Research Project/ Societal Related Project
+
+Node JS/ React JS/ Django
+
+Constitution of India
+
+III Year
+
+Design and Analysis of Algorithms
+
+Computer Networks
+
+DevOps
+
+Professional Elective-l
+
+Professional Elective -II
+
+Computer Networks Lab
+
+DevOps Lab
+
+Advanced English Communication Skills Lab
+
+UI design- Flutter
+
+Intellectual Property Rights
+
+Machine Learning
+
+Formal Languages and Automata Theory
+
+Artificial Intelligence
+
+Professional Elective - III
+
+Open Elective-l
+
+Machine Learning Lab
+
+Artificial Intelligence Laboratory
+
+Professional Elective-III Lab
+
+Industrial Oriented Mini Project/ Internship/ Skill Development Course (Big data-Spark)
+
+Environmental Science
+
+IV Year
+
+Cryptography and Network Security
+
+Compiler Design
+
+Professional Elective -IV
+
+Professional Elective -V
+
+Open Elective - II
+
+Cryptography and Network Security Lab
+
+Compiler Design Lab
+
+Project Stage - I
+
+Organizational Behavior
+
+Professional Elective - VI
+
+Open Elective - III
+
+Project Stage - II including Seminar
+
+5. Electronics and Communication Engineering    
+
+I Year
+
+Matrices and Calculus
+
+Applied Physics
+
+C Programming for Engineers
+
+Engineering Workshop
+
+English for Skill Enhancement
+
+Elements of Electronics and Communication Engineering
+
+Applied Physics Laboratory
+
+English Language and Communication Skills Laboratory
+
+C Programming for Engineers Laboratory
+
+Environmental Science
+
+Ordinary Differential Equations and Vector Calculus
+
+Engineering Chemistry
+
+Computer Aided Engineering Graphics
+
+Basic Electrical Engineering
+
+Electronic Devices and Circuits
+
+Applied Python Programming Laboratory
+
+Engineering Chemistry Laboratory
+
+Basic Electrical Engineering Laboratory
+
+Electronic Devices and Circuits Laboratory
+
+II Year
+
+Analog Circuits
+
+Network analysis and Synthesis
+
+Digital Logic Design
+
+Signals and Systems
+
+Probability Theory and Stochastic Processes
+
+Analog Circuits Laboratory
+
+Digital logic Design Laboratory
+
+Basic Simulation Laboratory
+
+Constitution of India
+
+Numerical Methods and Complex Variables
+
+Electromagnetic Fields and Transmission Lines
+
+Analog and Digital Communications
+
+Linear and Digital IC Applications
+
+Electronic Circuit Analysis
+
+Analog and Digital Communications Laboratory
+
+Linear and Digital IC Applications Laboratory
+
+Electronic Circuit Analysis Laboratory
+
+Real Time Project/ Field Based Project
+
+Gender Sensitization Lab
+
+III Year
+
+Microcontrollers
+
+IoT Architectures and Protocols
+
+Control Systems
+
+Business Economics & Financial Analysis
+
+Professional Elective - I
+
+Microcontrollers Laboratory
+
+IoT Architectures and Protocols Laboratory
+
+Advanced English Communication Skills Laboratory
+
+Intellectual Property Rights
+
+Antennas and Wave Propagation
+
+Digital Signal Processing
+
+CMOS VLSI Design
+
+Professional Elective - II
+
+Open Elective - I
+
+Digital Signal Processing Laboratory
+
+CMOS VLSI Design Laboratory
+
+Advanced Communication Laboratory
+
+Industry Oriented Mini Project/ Internship
+
+Environmental Science
+
+IV Year
+
+Microwave and Optical Communications
+
+Professional Elective - III
+
+Professional Elective - IV
+
+Open Elective - II
+
+Professional Practice, Law & Ethics
+
+
+Sources and related content
+fdocuments.in
+fdocuments.in
+Met.Engg.B.Tech.R22
+
+PDF
+R13B.Tech.Biotech
+
+PDF
+R22B.Tech....reSyllabus
+
+PDF
+R22B.Tech....eSyllabus2
+
+PDF
+
+
+
+
+
+Your uploads may be too large for the best results. Learn more
+
+make pdf
+
+
+
+Analysis
+I am unable to create a PDF directly with the extracted data. However, I can provide you with the organized text, which you can then easily copy and paste into a document editor (like Google Docs, Microsoft Word, etc.) and save as a PDF.
+
+Here's the organized subject list by branch:
+
+1. Metallurgical Engineering
+
+I Year
+
+Matrices and Calculus    
+
+Engineering Chemistry    
+
+Programming for Problem Solving    
+
+Basic Electrical Engineering    
+
+Computer Aided Engineering Graphics    
+
+Elements of Computer Science & Engineering    
+
+Engineering Chemistry Laboratory    
+
+Programming for Problem Solving Laboratory    
+
+Basic Electrical Engineering Laboratory    
+
+Ordinary Differential Equations and Vector Calculus    
+
+Applied Physics    
+
+Engineering Workshop    
+
+English for Skill Enhancement    
+
+Electronic Devices and Circuits    
+
+Python Programming Laboratory    
+
+Applied Physics Laboratory    
+
+English Language and Communication Skills Laboratory    
+
+IT Workshop    
+
+Environmental Science    
+
+II Year
+
+Material Science and Metallurgy    
+
+Metallurgical Thermodynamics & Kinetics    
+
+Fuels, Refractories & Pyrometry    
+
+Mineral Processing    
+
+Engineering Mathematics    
+
+Material Testing Laboratory    
+
+Metallurgical Thermodynamics Laboratory    
+
+Mineral Processing Laboratory    
+
+Constitution of India    
+
+Non-Ferrous Extractive Metallurgy    
+
+Iron Making    
+
+Heat Treatment    
+
+Transport Phenomena    
+
+Non-Ferrous Extractive Metallurgy Laboratory    
+
+Iron Making Laboratory    
+
+Heat Treatment Laboratory    
+
+Quantitative Metallography Lab    
+
+Gender Sensitization Lab    
+
+III Year
+
+Physical Metallurgy    
+
+Steel Making    
+
+Deformation of Materials    
+
+Professional Elective - I    
+
+Physical Metallurgy Laboratory    
+
+Steel Making Laboratory    
+
+Simulation Laboratory    
+
+Intellectual Property Rights    
+
+Ceramics and Composite Materials / Corrosion and Wear / Powder Metallurgy (Professional Elective - I)    
+
+Heat Treatment Technology    
+
+Welding Technology    
+
+Foundry Technology    
+
+Professional Elective - II    
+
+Open Elective - I    
+
+Heat Treatment Technology Lab    
+
+Welding Technology Lab    
+
+Foundry Technology Lab    
+
+Industry Oriented Mini Project/ Internship    
+
+Environmental Science    
+
+IV Year
+
+Materials Characterization Techniques    
+
+Professional Elective - III    
+
+Professional Elective - IV    
+
+Open Elective - II    
+
+Materials Characterization Techniques Lab    
+
+Project Stage - I    
+
+Professional Elective - V    
+
+Professional Elective - VI    
+
+Open Elective - III    
+
+Project Stage - II including Seminar    
+
+High Temperature Materials / Surface Engineering / Advanced Forming Techniques / Biomaterials (Professional Elective - III, IV, V & VI)    
+
+2. Bio-Technology
+
+I Year
+
+English    
+
+Mathematics - I    
+
+Engineering Physics    
+
+Engineering Chemistry    
+
+Computer Programming    
+
+Engineering Mechanics    
+
+Engineering Drawing    
+
+English Language Lab    
+
+Computer Programming Lab    
+
+Engineering Physics Lab    
+
+Engineering Chemistry Lab    
+
+Mathematics - II    
+
+Engineering Graphics    
+
+Basic Electrical Engineering    
+
+II Year
+
+Probability and Statistics    
+
+Applied Mathematics    
+
+Biology for Engineers    
+
+Basic Organic Chemistry    
+
+Biochemistry    
+
+Microbiology    
+
+Biochemistry Lab    
+
+Microbiology Lab    
+
+Organic Chemistry Lab    
+
+Environmental Studies    
+
+Cell Biology    
+
+Genetics    
+
+Analytical Techniques    
+
+Chemical Engineering Principles    
+
+Cell Biology Lab    
+
+Genetics Lab    
+
+Analytical Techniques Lab    
+
+Chemical Engineering Principles Lab    
+
+III Year
+
+Immunology    
+
+Molecular Biology    
+
+Bioprocess Engineering - I    
+
+Heat Transfer    
+
+Immunology Lab    
+
+Molecular Biology Lab    
+
+Bioprocess Engineering - I Lab
