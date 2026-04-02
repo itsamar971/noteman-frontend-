@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 
 const EASE_OUT = [0.16, 1, 0.3, 1];
 
@@ -28,15 +29,13 @@ export default function AdminManageResources() {
   // Fetch all resources
   const { data: resources, isLoading, error } = useQuery<any[]>({
     queryKey: ["/api/resources"],
-    queryFn: () => fetch("/api/resources").then(r => r.json()),
+    queryFn: () => apiRequest("GET", "/api/resources").then(r => r.json()),
   });
 
   // Delete mutation
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
-      const response = await fetch(`/api/resources/${id}`, {
-        method: "DELETE",
-      });
+      const response = await apiRequest("DELETE", `/api/resources/${id}`);
       if (!response.ok) throw new Error("Failed to delete resource");
       return id;
     },

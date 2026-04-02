@@ -4,6 +4,7 @@ import { Download, Eye, FileText, Calendar, Hash } from "lucide-react";
 import PdfViewerModal from "@/components/modals/PdfViewerModal";
 import { useToast } from "@/hooks/use-toast";
 import { Resource } from "@shared/schema";
+import { apiRequest } from "@/lib/queryClient";
 
 const SPRING = { type: "spring", stiffness: 280, damping: 22 };
 const EASE_OUT = [0.16, 1, 0.3, 1];
@@ -22,7 +23,7 @@ export default function ResourceItem({ resource, index = 0 }: ResourceItemProps)
     : "Unknown";
 
   const incrementView = async () => {
-    try { await fetch(`/api/resources/${resource.id}/view`, { method: "POST" }); } catch {}
+    try { await apiRequest("POST", `/api/resources/${resource.id}/view`); } catch {}
   };
 
   const handleDownload = () => {

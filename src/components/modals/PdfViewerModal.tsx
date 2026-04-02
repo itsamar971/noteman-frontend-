@@ -4,11 +4,13 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Download, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 
 interface PdfViewerModalProps {
   isOpen: boolean;
@@ -37,7 +39,7 @@ export default function PdfViewerModal({
         setLoading(false);
       } else if (resourceId) {
         // If we need to fetch the resource by ID
-        fetch(`/api/resources/${resourceId}`)
+        apiRequest("GET", `/api/resources/${resourceId}`)
           .then(response => {
             if (!response.ok) {
               throw new Error("Failed to fetch PDF data");
@@ -83,6 +85,7 @@ export default function PdfViewerModal({
       <DialogContent className="max-w-4xl w-full max-h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
+          <DialogDescription className="sr-only">View PDF document {title}</DialogDescription>
         </DialogHeader>
         
         <div className="flex-grow p-4 overflow-auto h-[60vh]">
