@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigation } from "@/hooks/useNavigation";
 import AddPdfModal from "@/components/modals/AddPdfModal";
-import { ArrowRight, Cpu, Zap, Shield, Radio, FlaskConical, MapPin, Hammer, Bot, GitBranch, ChevronDown, MessageSquare } from "lucide-react";
-import { branches, Branch } from "@shared/schema";
+import { ArrowRight, Cpu, Zap, Shield, Radio, FlaskConical, MapPin, Hammer, Bot, GitBranch, ChevronDown, MessageSquare, Search, CheckCircle } from "lucide-react";
+import { branches, Branch, subjects, subjectsByBranchAndSemester } from "@shared/schema";
+import { useLocation } from "wouter";
+import RecentlyAddedCarousel from "@/components/home/RecentlyAddedCarousel";
 
 const SPRING = { type: "spring", stiffness: 300, damping: 24 };
 const EASE_OUT = [0.16, 1, 0.3, 1];
@@ -48,9 +50,67 @@ const cardVariants = {
 };
 
 export default function Home() {
-  const { isAdmin } = useAuth();
+  const { user } = useAuth();
   const { navigateToBranch } = useNavigation();
-  const [isAddPdfModalOpen, setIsAddPdfModalOpen] = useState(false);
+  const [, setLocation] = useLocation();
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  // Search Intelligence Typing Effect
+  const placeholders = [
+    "Search notes, subjects, or branches...",
+    "Try: Data Structures",
+    "Try: R22 Physics",
+    "Try: Lab Manuals",
+    "Try: Engineering Mathematics"
+  ];
+  
+  const [placeholderText, setPlaceholderText] = useState("");
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentFullText = placeholders[placeholderIndex];
+    let typingSpeed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && placeholderText === currentFullText) {
+      typingSpeed = 2500; // Pause longer when fully typed out
+      const timeout = setTimeout(() => setIsDeleting(true), typingSpeed);
+      return () => clearTimeout(timeout);
+    } else if (isDeleting && placeholderText === "") {
+      setIsDeleting(false);
+      setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
+      typingSpeed = 500; // Small pause before starting next word
+      const timeout = setTimeout(() => {}, typingSpeed);
+      return () => clearTimeout(timeout);
+    }
+
+    const timeout = setTimeout(() => {
+      setPlaceholderText((prev) =>
+        isDeleting
+          ? currentFullText.substring(0, prev.length - 1)
+          : currentFullText.substring(0, prev.length + 1)
+      );
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [placeholderText, isDeleting, placeholderIndex]);
+
+  const filteredSubjects = subjects
+    .filter(s => s.toLowerCase().includes(searchQuery.toLowerCase()))
+    .slice(0, 5);
+
+  const handleSubjectSelect = (subjectName: string) => {
+    for (const [branch, sems] of Object.entries(subjectsByBranchAndSemester)) {
+      for (const [sem, subjectList] of Object.entries(sems as Record<string, string[]>)) {
+        if (subjectList.includes(subjectName)) {
+           setLocation(`/branch/${encodeURIComponent(branch)}/semester/${encodeURIComponent(sem)}/subject/${encodeURIComponent(subjectName)}`);
+           return;
+        }
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -135,43 +195,78 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.25 }}
           >
-            The ultimate resource repository for engineering students — textbooks, exam papers &amp; lab manuals, curated by semester.
+            The ultimate resource repository for engineering students — Notes, textbooks, exam papers & lab manuals, curated by semester.
           </motion.p>
 
-          {/* Buttons */}
+          {/* Search Bar */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+            className="w-full max-w-2xl mx-auto mb-6 relative"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.35 }}
           >
-            <motion.button
-              className="btn-brand flex items-center gap-2 px-8 h-12 text-sm"
-              onClick={() => document.getElementById('branches-section')?.scrollIntoView({ behavior: 'smooth' })}
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={SPRING}
-            >
-              Start Exploring
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-            <motion.button
-              className="h-12 px-8 rounded-xl border border-zinc-200 dark:border-zinc-800
-                         text-zinc-700 dark:text-zinc-300 font-black uppercase tracking-wide text-xs
-                         hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-400
-                         transition-all duration-200"
-              onClick={() => document.getElementById('faq-section')?.scrollIntoView({ behavior: 'smooth' })}
-              whileHover={{ scale: 1.02, y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              transition={SPRING}
-            >
-              View FAQs
-            </motion.button>
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-zinc-400 group-focus-within:text-indigo-500 transition-colors" />
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                placeholder={placeholderText}
+                className="w-full pl-12 pr-32 py-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-full text-zinc-900 dark:text-white placeholder-zinc-500 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-lg"
+              />
+              {showSuggestions && searchQuery.trim() !== "" && filteredSubjects.length > 0 && (
+                <div className="absolute top-16 left-0 w-full bg-white dark:bg-[#151515] border border-zinc-200 dark:border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden">
+                  {filteredSubjects.map((sub, idx) => (
+                    <button
+                      key={idx}
+                      className="w-full text-left px-5 py-3 hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300 font-medium transition-colors border-b border-zinc-100 dark:border-white/5 last:border-0"
+                      onClick={() => handleSubjectSelect(sub)}
+                    >
+                      {sub}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <div className="absolute inset-y-0 right-2 flex items-center">
+                <button
+                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95"
+                  onClick={() => document.getElementById('branches-section')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Explore
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Trust Badges */}
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-6"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.4 }}
+          >
+            {[
+              "No account needed",
+              "Free forever",
+              "R22 Supported"
+            ].map((text, i) => (
+              <span key={i} className="flex items-center gap-1.5 text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+                <CheckCircle className="w-3.5 h-3.5 text-indigo-500" />
+                {text}
+              </span>
+            ))}
           </motion.div>
 
           {/* Stats — inline, equal gap below buttons */}
           <motion.div
-            className="flex items-center justify-center gap-12"
+            className="flex items-center justify-center gap-12 pt-6 border-t border-zinc-200 dark:border-white/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
@@ -180,6 +275,7 @@ export default function Home() {
               { value: "11+", label: "Branches" },
               { value: "8",   label: "Semesters" },
               { value: "500+", label: "Resources" },
+              { value: <div className="flex items-center justify-center gap-2"><span className="relative flex h-3 w-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span> Updated</div>, label: "Weekly" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -188,14 +284,17 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 + i * 0.08, duration: 0.5, ease: EASE_OUT }}
               >
-                <div className="text-2xl font-black tabular-nums tracking-tighter text-zinc-900 dark:text-white">{s.value}</div>
-                <div className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-400 mt-0.5">{s.label}</div>
+                <div className="text-2xl font-black tabular-nums tracking-tighter text-zinc-900 dark:text-white flex justify-center items-center h-8">{s.value}</div>
+                <div className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-400 mt-1">{s.label}</div>
               </motion.div>
             ))}
           </motion.div>
 
         </motion.div>
       </section>
+
+      {/* ==================== RECENTLY ADDED ==================== */}
+      <RecentlyAddedCarousel />
 
       {/* ==================== BRANCHES ==================== */}
       <section id="branches-section" className="py-24 relative">
@@ -260,9 +359,14 @@ export default function Home() {
                     {branchDescriptions[branch]}
                   </p>
 
-                  <div className="mt-5 flex items-center gap-1 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-[0.25em] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-8px] group-hover:translate-x-0">
-                    Access Semester
-                    <ArrowRight className="w-3 h-3" />
+                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-white/5 flex gap-2 items-center justify-between">
+                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">
+                      6 Subjects · 24 Files
+                    </span>
+                    <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.25em] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-8px] group-hover:translate-x-0">
+                      View
+                      <ArrowRight className="w-3 h-3" />
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -294,7 +398,7 @@ export default function Home() {
           </motion.div>
 
           {/* FAQ Accordion */}
-          <div className="space-y-4">
+          <div className="space-y-[10px]">
             {[
               {
                 q: "Is NoteMan completely free?",
@@ -326,36 +430,37 @@ export default function Home() {
               }
             ].map((faq, idx) => {
               const [isOpen, setIsOpen] = useState(false);
+              const num = String(idx + 1).padStart(2, '0');
               return (
                 <motion.div
                   key={idx}
-                  className={`glass-card rounded-[2rem] border-white/5 bg-zinc-900/20 overflow-hidden transition-all duration-300 ${isOpen ? 'ring-1 ring-indigo-500/30 bg-zinc-900/40' : ''}`}
+                  className={`glass-card rounded-[1rem] border-l-[3px] border-l-[#7C3AED] bg-zinc-900/20 overflow-hidden transition-all duration-300 hover:shadow-[0_0_12px_rgba(124,58,237,0.2)] ${isOpen ? 'bg-zinc-900/40' : ''}`}
                   initial={false}
                 >
                   <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="w-full flex items-center justify-between p-6 text-left"
+                    className="w-full flex items-center p-5 text-left"
                   >
-                    <span className="font-bold text-sm md:text-base text-zinc-800 dark:text-zinc-200 pr-8">{faq.q}</span>
+                    <span className="text-[#7C3AED] font-black text-sm tracking-widest mr-4 opacity-50">{num}</span>
+                    <span className="font-bold text-sm md:text-base text-zinc-800 dark:text-zinc-200 flex-1">{faq.q}</span>
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={SPRING}
-                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border border-zinc-200 dark:border-zinc-800 transition-colors ${isOpen ? 'bg-indigo-500 border-indigo-400 text-white' : 'text-zinc-500'}`}
+                      className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-[#7C3AED]"
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-5 h-5" />
                     </motion.div>
                   </button>
                   <motion.div
                     initial="collapsed"
                     animate={isOpen ? "open" : "collapsed"}
                     variants={{
-                      open: { opacity: 1, height: "auto", marginBottom: 24 },
+                      open: { opacity: 1, height: "auto", marginBottom: 20 },
                       collapsed: { opacity: 0, height: 0, marginBottom: 0 }
                     }}
                     transition={{ duration: 0.4, ease: EASE_OUT }}
                   >
-                    <div className="px-6 pb-2">
-                      <div className="h-px w-full bg-zinc-800/50 mb-6" />
+                    <div className="px-5 pl-12 pb-2">
                       <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed font-medium">
                         {faq.a}
                       </p>
@@ -369,8 +474,8 @@ export default function Home() {
       </section>
 
       <AddPdfModal
-        isOpen={isAddPdfModalOpen}
-        onClose={() => setIsAddPdfModalOpen(false)}
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
       />
     </div>
   );

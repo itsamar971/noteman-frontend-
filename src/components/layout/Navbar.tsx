@@ -13,10 +13,6 @@ export default function Navbar() {
   const [location] = useLocation();
   if (location === "/login" || location.startsWith("/admin")) return null;
 
-  const handleAdminClick = () => {
-    setLocation(isAdmin ? "/admin/dashboard" : "/login");
-  };
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -46,9 +42,8 @@ export default function Navbar() {
         {/* MIDDLE - Nav Links */}
         <div className="hidden md:flex items-center gap-8">
           {[
-            { name: "Community", href: "https://chat.whatsapp.com/Bm4EJ47LtnQ2ynYXraxqB5?mode=gi_t" },
             { name: "About Us", href: "/about" },
-            { name: "Contact", href: "https://docs.google.com/forms/d/e/1FAIpQLSctIIgnPikT8HukJTp_pApE35JH6x8HhTw8jeB9JIHV_lZJTg/viewform?usp=dialog" },
+            { name: "Contact", href: "/contact" },
           ].map((item) => (
             <button
               key={item.name}
@@ -66,15 +61,35 @@ export default function Navbar() {
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-indigo-500 dark:bg-white rounded-full transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
+
+          <a
+            href="https://chat.whatsapp.com/Bm4EJ47LtnQ2ynYXraxqB5?mode=gi_t"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-all text-sm font-medium"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4 text-[#2AABEE]"
+            >
+              <path d="M22 2L11 13" />
+              <path d="M22 2L15 22L11 13L2 9L22 2z" />
+            </svg>
+            Join Community
+          </a>
         </div>
 
         {/* RIGHT - Admin Button */}
         <button
-          onClick={handleAdminClick}
-          className="bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold
-                     px-5 py-2 rounded-lg transition-colors duration-200"
+          onClick={() => setLocation(isAdmin ? "/admin/dashboard" : "/login")}
+          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-all text-sm font-medium"
         >
-          + Admin
+          Admin
         </button>
 
       </div>

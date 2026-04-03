@@ -7,7 +7,8 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-const API_URL = import.meta.env.VITE_API_URL || "";
+const isProd = (import.meta as any).env.PROD;
+const API_URL = (import.meta as any).env.VITE_API_URL || (isProd ? "https://noteman-backend.onrender.com" : "");
 
 /**
  * Prepends the API_URL to a relative path if it's not already a full URL.

@@ -55,7 +55,19 @@ export default function ResourceList({ semester, branch, subject }: ResourceList
   const SkeletonSection = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {[...Array(3)].map((_, i) => (
-        <Skeleton key={i} className="h-20 w-full rounded-2xl bg-zinc-100 dark:bg-zinc-800" />
+        <div key={i} className="glass-card rounded-2xl p-5 flex items-start gap-4">
+          {/* Icon skeleton */}
+          <div className="w-10 h-10 flex-shrink-0 rounded-2xl bg-violet-500/10 animate-pulse" />
+          <div className="flex-1 space-y-3 pt-1">
+            {/* Title skeleton */}
+            <div className="h-4 w-3/4 rounded bg-violet-500/10 animate-pulse" />
+            {/* Stats skeleton */}
+            <div className="flex gap-2">
+              <div className="h-3 w-12 rounded bg-zinc-800/50 animate-pulse" />
+              <div className="h-3 w-16 rounded bg-zinc-800/50 animate-pulse" />
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   );

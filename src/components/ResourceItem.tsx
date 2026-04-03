@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Download, Eye, FileText, Calendar, Hash } from "lucide-react";
+import { Download, Eye, FileText, Calendar, Hash, Share2 } from "lucide-react";
 import PdfViewerModal from "@/components/modals/PdfViewerModal";
 import { useToast } from "@/hooks/use-toast";
 import { Resource } from "@shared/schema";
@@ -44,6 +44,15 @@ export default function ResourceItem({ resource, index = 0 }: ResourceItemProps)
   };
 
   const handleView = () => { incrementView(); setIsPdfViewerOpen(true); };
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?r=${resource.id}`);
+      toast({ title: "Link copied to clipboard!", description: "You can now share this resource directly." });
+    } catch {
+      toast({ title: "Failed to copy", description: "Browser prevented clipboard access.", variant: "destructive" });
+    }
+  };
 
   const sizeLabel = resource.pages && resource.pages > 0
     ? `${resource.pages} pp.`
@@ -90,6 +99,9 @@ export default function ResourceItem({ resource, index = 0 }: ResourceItemProps)
                 <Calendar className="w-2.5 h-2.5" />
                 {formattedDate}
               </span>
+              <span className="text-[10px] font-medium text-zinc-400 dark:text-zinc-500 bg-zinc-100 dark:bg-zinc-800/50 px-1.5 py-0.5 rounded">
+                Updated: Mar 2026
+              </span>
             </div>
           </div>
 
@@ -118,6 +130,18 @@ export default function ResourceItem({ resource, index = 0 }: ResourceItemProps)
               transition={SPRING}
             >
               <Eye className="w-3.5 h-3.5" />
+            </motion.button>
+            <motion.button
+              className="w-8 h-8 rounded-xl bg-zinc-500/10 border border-zinc-500/20
+                         flex items-center justify-center text-zinc-500 dark:text-zinc-400
+                         hover:bg-zinc-500/20 transition-colors duration-200"
+              onClick={handleShare}
+              title="Share"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={SPRING}
+            >
+              <Share2 className="w-3.5 h-3.5" />
             </motion.button>
           </div>
         </div>
