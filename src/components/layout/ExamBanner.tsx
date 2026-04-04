@@ -5,22 +5,25 @@ export default function ExamBanner() {
   const [, setLocation] = useLocation();
 
   return (
-    <div className="fixed bottom-8 right-6 z-[60] animate-in slide-in-from-bottom-5 fade-in duration-500">
+    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-6 z-[60] animate-in slide-in-from-bottom-5 fade-in duration-500 scale-90 sm:scale-100 origin-bottom-right">
       <div 
         onClick={() => setLocation("/exam-mode")}
-        className="group relative flex items-center bg-[#0a0a0a] rounded-full border border-[#F59E0B]/50 pr-6 h-[44px] cursor-pointer hover:bg-[#111] transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.8)]"
+        className="group relative flex items-center bg-[#0a0a0a] rounded-full border border-[#F59E0B]/50 pr-5 sm:pr-6 h-[40px] sm:h-[44px] cursor-pointer hover:bg-[#111] transition-all hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.8)]"
       >
-        {/* Animated Background Ripple Rings */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center w-[44px] h-[44px] z-0 pointer-events-none">
+        {/* Animated Background Ripple Rings (Desktop Only) */}
+        <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 items-center justify-center w-[44px] h-[44px] z-0 pointer-events-none">
           {/* Ring 1 */}
-          <div className="absolute w-11 h-11 rounded-full bg-[#F59E0B]/40 animate-[ping_3s_ease-out_infinite]"></div>
+          <div className="absolute w-11 h-11 rounded-full bg-[#F59E0B]/30 animate-[ping_4s_ease-out_infinite]"></div>
           {/* Ring 2 */}
           <div 
-            className="absolute w-11 h-11 rounded-full bg-[#F59E0B]/30 animate-[ping_3s_ease-out_infinite]" 
-            style={{ animationDelay: '1.5s' }}
+            className="absolute w-11 h-11 rounded-full bg-[#F59E0B]/20 animate-[ping_4s_ease-out_infinite]" 
+            style={{ animationDelay: '1.3s' }}
           ></div>
-          {/* Static Soft Glow */}
-          <div className="absolute w-[68px] h-[68px] rounded-full bg-[#F59E0B]/10"></div>
+          {/* Ring 3 */}
+          <div 
+            className="absolute w-11 h-11 rounded-full bg-[#F59E0B]/10 animate-[ping_4s_ease-out_infinite]" 
+            style={{ animationDelay: '2.6s' }}
+          ></div>
         </div>
 
         {/* The Solid Orange Circle (Flushed perfectly to the left) */}

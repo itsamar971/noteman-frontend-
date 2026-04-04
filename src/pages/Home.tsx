@@ -177,11 +177,11 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.15 }}
           >
-            <span className="block text-5xl md:text-7xl text-zinc-900 dark:text-white tracking-tight">
+            <span className="block text-[clamp(1.5rem,7vw,3rem)] sm:text-4xl md:text-6xl lg:text-7xl text-zinc-900 dark:text-white tracking-tight whitespace-nowrap">
               Academic Excellence
             </span>
             <span
-              className="block text-5xl md:text-7xl tracking-tight"
+              className="block text-[clamp(1.5rem,7vw,3rem)] sm:text-4xl md:text-6xl lg:text-7xl tracking-tight"
               style={{ color: '#6366F1' }}
             >
               Unlocked
@@ -190,12 +190,17 @@ export default function Home() {
 
           {/* Description */}
           <motion.p
-            className="text-zinc-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto font-medium leading-relaxed mb-8"
+            className="text-zinc-500 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed mb-8 px-2"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.25 }}
           >
-            The ultimate resource repository for engineering students — Notes, textbooks, exam papers & lab manuals, curated by semester.
+            <span className="sm:hidden">
+              Your study buddy: notes, books, exams, labs, semester‑wise
+            </span>
+            <span className="hidden sm:inline">
+              The ultimate resource repository for engineering students — Notes, textbooks, exam papers & lab manuals, curated by semester.
+            </span>
           </motion.p>
 
           {/* Search Bar */}
@@ -219,7 +224,7 @@ export default function Home() {
                 onFocus={() => setShowSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 placeholder={placeholderText}
-                className="w-full pl-12 pr-32 py-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-full text-zinc-900 dark:text-white placeholder-zinc-500 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-lg"
+                className="w-full pl-10 md:pl-12 pr-[90px] md:pr-32 py-3.5 md:py-4 text-sm md:text-base bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-full text-zinc-900 dark:text-white placeholder-zinc-500 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-lg text-ellipsis"
               />
               {showSuggestions && searchQuery.trim() !== "" && filteredSubjects.length > 0 && (
                 <div className="absolute top-16 left-0 w-full bg-white dark:bg-[#151515] border border-zinc-200 dark:border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden">
@@ -234,9 +239,9 @@ export default function Home() {
                   ))}
                 </div>
               )}
-              <div className="absolute inset-y-0 right-2 flex items-center">
+              <div className="absolute inset-y-0 right-1.5 md:right-2 flex items-center">
                 <button
-                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95"
+                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-5 md:px-6 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-bold transition-all hover:scale-105 active:scale-95"
                   onClick={() => document.getElementById('branches-section')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Explore
@@ -264,9 +269,9 @@ export default function Home() {
             ))}
           </motion.div>
 
-          {/* Stats — inline, equal gap below buttons */}
+          {/* Stats — flex wrap to avoid overflow */}
           <motion.div
-            className="flex items-center justify-center gap-12 pt-6 border-t border-zinc-200 dark:border-white/5"
+            className="flex flex-wrap items-center justify-center gap-6 md:gap-12 pt-6 border-t border-zinc-200 dark:border-white/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}

@@ -2,13 +2,15 @@ import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigation } from "@/hooks/useNavigation";
 import { useDarkMode } from "@/hooks/useDarkMode";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export default function Navbar() {
   const { isAdmin } = useAuth();
   const [, setLocation] = useLocation();
   const { navigateToHome } = useNavigation();
   const { isDark, toggle } = useDarkMode();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [location] = useLocation();
   if (location === "/login" || location.startsWith("/admin")) return null;
@@ -23,7 +25,7 @@ export default function Navbar() {
             id="dark-mode-toggle"
             onClick={toggle}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="w-8 h-8 rounded-lg flex items-center justify-center
+            className="hidden md:flex w-8 h-8 rounded-lg items-center justify-center
                        border border-zinc-200 dark:border-white/10 text-zinc-400 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white
                        hover:border-zinc-300 dark:hover:border-white/20 hover:scale-110 active:scale-95
                        transition-all duration-200"
@@ -32,8 +34,8 @@ export default function Navbar() {
           </button>
 
           <button
-            onClick={() => navigateToHome()}
-            className="text-zinc-900 dark:text-white font-bold text-xl tracking-tight hover:opacity-80 transition-opacity"
+            onClick={() => { setIsMobileMenuOpen(false); navigateToHome(); }}
+            className="text-zinc-900 dark:text-white font-bold text-xl tracking-tight hover:opacity-80 transition-opacity whitespace-nowrap"
           >
             NoteMan
           </button>
@@ -84,15 +86,71 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* RIGHT - Admin Button */}
-        <button
-          onClick={() => setLocation(isAdmin ? "/admin/dashboard" : "/login")}
-          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-all text-sm font-medium"
-        >
-          Admin
-        </button>
-
+        {/* RIGHT - Admin Button Desktop & Hamburger Mobile */}
+        <div className="flex items-center">
+          <button
+            onClick={() => setLocation(isAdmin ? "/admin/dashboard" : "/login")}
+            className="hidden md:flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-white/70 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-all text-sm font-medium"
+          >
+            Admin
+          </button>
+          
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex items-center justify-center w-10 h-10 text-zinc-900 dark:text-white"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-zinc-200 dark:border-white/10 shadow-lg animate-in slide-in-from-top-4 py-4 px-6 flex flex-col gap-4 z-40">
+          <button
+            onClick={() => { setIsMobileMenuOpen(false); setLocation("/about"); }}
+            className="text-left text-zinc-700 dark:text-zinc-300 font-medium py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          >
+            About Us
+          </button>
+          <button
+            onClick={() => { setIsMobileMenuOpen(false); setLocation("/contact"); }}
+            className="text-left text-zinc-700 dark:text-zinc-300 font-medium py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          >
+            Contact
+          </button>
+          <a
+            href="https://chat.whatsapp.com/Bm4EJ47LtnQ2ynYXraxqB5?mode=gi_t"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center gap-2 text-zinc-700 dark:text-zinc-300 font-medium py-2 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#2AABEE]">
+              <path d="M22 2L11 13" />
+              <path d="M22 2L15 22L11 13L2 9L22 2z" />
+            </svg>
+            Join Community
+          </a>
+          <div className="h-px w-full bg-zinc-200 dark:bg-white/10 my-2" />
+          <button
+            onClick={() => { setIsMobileMenuOpen(false); setLocation(isAdmin ? "/admin/dashboard" : "/login"); }}
+            className="text-left font-bold text-indigo-600 dark:text-indigo-400 py-2"
+          >
+            Admin
+          </button>
+          {/* Also offer dark mode toggle in mobile menu */}
+          <div className="flex items-center justify-between py-2 mt-2">
+            <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Theme</span>
+            <button
+              onClick={toggle}
+              className="flex items-center justify-center p-2 rounded-lg bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-white"
+            >
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

@@ -31,19 +31,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const initAuth = async () => {
       try {
         // 1. Check if we have a backend session first (higher priority for admin)
-        const response = await apiRequest("GET", "/api/user");
-        if (response.ok) {
-          const userData = await response.json();
-          setUser(userData);
-          setLoading(false);
-          return;
+        try {
+          const response = await apiRequest("GET", "/api/user");
+          if (response.ok) {
+            const userData = await response.json();
+            if (userData) {
+              setUser(userData);
+              setLoading(false);
+              return; // Exit early only if an actual backend auth user exists
+            }
+          }
+        } catch (backendError: any) {
+          // A network or explicit error occurred; suppress and fall back
         }
 
         // 2. Fallback to Supabase session
         const { data: { session } } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
       } catch (error) {
-        console.error("Auth initialization failed:", error);
+        console.error("Critical Auth Configuration Error:", error);
       } finally {
         setLoading(false);
       }
