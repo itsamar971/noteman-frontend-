@@ -38,11 +38,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
             if (userData) {
               setUser(userData);
               setLoading(false);
-              return; // Exit early only if an actual backend auth user exists
+              return; // Exit early if backend auth is valid
             }
           }
         } catch (backendError: any) {
-          // A network or explicit error occurred; suppress and fall back
+          // Fall through to Supabase if backend check fails
         }
 
         // 2. Fallback to Supabase session
@@ -59,18 +59,26 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     // Listen for Supabase auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: string, session) => {
-      // Only update if we don't have a backend user active
-      // or if it's an explicit sign out
-      if (_event === 'SIGNED_OUT') {
-        setUser(null);
-      } else if (!user?.username) {
-        setUser(session?.user ?? null);
-      }
+      // Use functional update to ensure we check the latest state 
+      // and don't overwrite a successful backend admin login
+      setUser((currentUser: any) => {
+        if (_event === 'SIGNED_OUT') {
+          return null;
+        }
+        
+        // If we already have a backend admin user, do NOT let Supabase events overwrite it
+        if (currentUser?.username) {
+          return currentUser;
+        }
+        
+        return session?.user ?? null;
+      });
+      
       setLoading(false);
     });
 
     return () => subscription.unsubscribe();
-  }, [toast, user?.username]);
+  }, []); // Only run once on mount to establish initial state
 
   // Login with credentials (Backend)
   const loginWithCredentials = async (username: string, password: string) => {
