@@ -1,25 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export function useDarkMode() {
-  const [isDark, setIsDark] = useState<boolean>(() => {
-    const stored = localStorage.getItem("noteman-theme");
-    // If user has never toggled, default to dark
-    if (!stored) return true;
-    return stored === "dark";
-  });
-
+  // Force dark mode globally
   useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add("dark");
-      localStorage.setItem("noteman-theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("noteman-theme", "light");
-    }
-  }, [isDark]);
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("noteman-theme", "dark");
+  }, []);
 
-  const toggle = () => setIsDark((prev) => !prev);
-
-  return { isDark, toggle };
+  return { isDark: true, toggle: () => {} };
 }
+
