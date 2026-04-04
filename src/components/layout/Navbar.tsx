@@ -2,14 +2,13 @@ import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigation } from "@/hooks/useNavigation";
 import { useDarkMode } from "@/hooks/useDarkMode";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
   const { isAdmin } = useAuth();
   const [, setLocation] = useLocation();
   const { navigateToHome } = useNavigation();
-  const { isDark, toggle } = useDarkMode();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [location] = useLocation();
@@ -19,27 +18,13 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* LEFT - Dark mode toggle + Brand */}
-        <div className="flex items-center gap-3">
-          <button
-            id="dark-mode-toggle"
-            onClick={toggle}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="hidden md:flex w-8 h-8 rounded-lg items-center justify-center
-                       border border-zinc-200 dark:border-white/10 text-zinc-400 dark:text-white/40 hover:text-zinc-900 dark:hover:text-white
-                       hover:border-zinc-300 dark:hover:border-white/20 hover:scale-110 active:scale-95
-                       transition-all duration-200"
-          >
-            {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
-          </button>
-
-          <button
-            onClick={() => { setIsMobileMenuOpen(false); navigateToHome(); }}
-            className="text-zinc-900 dark:text-white font-bold text-xl tracking-tight hover:opacity-80 transition-opacity whitespace-nowrap"
-          >
-            NoteMan
-          </button>
-        </div>
+        {/* LEFT - Brand Logo */}
+        <button
+          onClick={() => { setIsMobileMenuOpen(false); navigateToHome(); }}
+          className="flex items-center hover:opacity-80 transition-opacity shrink-0"
+        >
+          <img src="/navbar-logo.svg" alt="NoteMan" className="h-6 md:h-7 w-auto" />
+        </button>
 
         {/* MIDDLE - Nav Links */}
         <div className="hidden md:flex items-center gap-8">
@@ -139,16 +124,6 @@ export default function Navbar() {
           >
             Admin
           </button>
-          {/* Also offer dark mode toggle in mobile menu */}
-          <div className="flex items-center justify-between py-2 mt-2">
-            <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Theme</span>
-            <button
-              onClick={toggle}
-              className="flex items-center justify-center p-2 rounded-lg bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-white"
-            >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-          </div>
         </div>
       )}
     </nav>
