@@ -81,18 +81,12 @@ export async function uploadFile(
     // 3. Save metadata to DB (via our API or Supabase direct)
     // For now, we still use our API but with the URL instead of file data
     const response = await apiRequest('POST', '/api/resources', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fileUrl: publicUrl,
-        storagePath: filePath,
-        fileName,
-        fileType: contentType,
-        fileSize: finalFile.size,
-        ...metadata
-      }),
+      fileUrl: publicUrl,
+      storagePath: filePath,
+      fileName,
+      fileType: contentType,
+      fileSize: finalFile.size,
+      ...metadata
     });
 
     if (!response.ok) {
