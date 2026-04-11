@@ -10,7 +10,7 @@ export default function UsersJoinedBadge() {
   useEffect(() => {
     async function trackVisit() {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/visit`, {
+        const res = await fetch("/api/visit", {
           method: "POST",
           credentials: "include",
         });
@@ -27,7 +27,7 @@ export default function UsersJoinedBadge() {
 
     intervalRef.current = setInterval(async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/stats`, { credentials: "include" });
+        const res = await fetch("/api/stats", { credentials: "include" });
         if (res.ok) {
           const data = await res.json();
           setCount(data.joinedUsers);
