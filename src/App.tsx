@@ -20,6 +20,7 @@ import { NavigationProvider } from "./hooks/useNavigation";
 import ScrollToTop from "@/components/ScrollToTop";
 import ExamBanner from "@/components/layout/ExamBanner";
 import TelegramFab from "@/components/ui/TelegramFab";
+import UsersJoinedBadge from "@/components/layout/UsersJoinedBadge";
 
 function App() {
   const [location] = useLocation();
@@ -29,6 +30,7 @@ function App() {
     <AuthProvider>
       <NavigationProvider>
         {!isDashboardOrAuth && <ExamBanner />}
+        {!isDashboardOrAuth && <UsersJoinedBadge />}
         <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <Navbar />
