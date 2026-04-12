@@ -15,6 +15,7 @@ import ContributePage from "@/pages/ContributePage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
 import ExamModePage from "@/pages/ExamModePage";
+import ExamSearchPage from "@/pages/ExamSearchPage";
 import { AuthProvider } from "./hooks/useAuth";
 import { NavigationProvider } from "./hooks/useNavigation";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -25,12 +26,13 @@ import UsersJoinedBadge from "@/components/layout/UsersJoinedBadge";
 function App() {
   const [location] = useLocation();
   const isDashboardOrAuth = location === "/login" || location.startsWith("/admin");
+  const isExamMode = location.startsWith("/exam-mode");
 
   return (
     <AuthProvider>
       <NavigationProvider>
-        {!isDashboardOrAuth && <ExamBanner />}
-        {!isDashboardOrAuth && <UsersJoinedBadge />}
+        {!isDashboardOrAuth && !isExamMode && <ExamBanner />}
+        {!isDashboardOrAuth && !isExamMode && <UsersJoinedBadge />}
         <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -41,6 +43,7 @@ function App() {
               <Route path="/branch/:branch/semester/:semester" component={SubjectPage} />
               <Route path="/branch/:branch/semester/:semester/subject/:subject" component={ResourcesPage} />
               <Route path="/exam-mode" component={ExamModePage} />
+              <Route path="/exam-mode/search" component={ExamSearchPage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/admin/dashboard" component={AdminDashboard} />
               <Route path="/admin/manage-resources" component={AdminManageResources} />
@@ -52,7 +55,7 @@ function App() {
               <Route component={NotFound} />
             </Switch>
           </main>
-          <Footer />
+          {!isExamMode && <Footer />}
         </div>
       </NavigationProvider>
     </AuthProvider>

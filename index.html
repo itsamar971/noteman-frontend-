@@ -11,6 +11,15 @@
       (function() {
         document.documentElement.classList.add('dark');
         localStorage.setItem('noteman-theme', 'dark');
+        
+        // Unregister any stale service workers
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+              registration.unregister();
+            }
+          });
+        }
       })();
     </script>
   </head>

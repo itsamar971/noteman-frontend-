@@ -13,7 +13,7 @@ import { supabase } from "./supabase";
  * @returns A promise that resolves to the resource ID
  */
 export async function uploadFile(
-  fileData: string | File | Blob, 
+  fileData: File | Blob, 
   fileName: string,
   contentType: string,
   metadata: {
@@ -22,83 +22,47 @@ export async function uploadFile(
     branch: string;
     subject: string;
     category: string;
+    resourceType?: string;
     author?: string;
     pages?: number;
     uploadedBy?: string;
   }
 ): Promise<number> {
   try {
-    let finalFile: Blob | File;
-    
-    // If it's a base64 string, convert to Blob
-    if (typeof fileData === 'string' && fileData.includes('base64,')) {
-      const resp = await fetch(fileData);
-      finalFile = await resp.blob();
-    } else if (typeof fileData === 'string') {
-      // Assuming it's a raw base64 string without data prefix
-      const byteCharacters = atob(fileData);
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
-      const byteArray = new Uint8Array(byteNumbers);
-      finalFile = new Blob([byteArray], { type: contentType });
-    } else {
-      finalFile = fileData;
+    // 1. Upload file to our backend (which handles Supabase)
+    const formData = new FormData();
+    formData.append("file", fileData, fileName);
+
+    const uploadResponse = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/resources/upload`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!uploadResponse.ok) {
+      throw new Error("Failed to upload file to storage");
     }
 
-    // 1. Upload to Supabase Storage
-    const fileExt = fileName.split('.').pop();
-    const filePath = `${metadata.branch}/${metadata.semester}/${Date.now()}.${fileExt}`;
-    
-    // Ensure bucket exists (or try to create it if permitted)
-    try {
-      const { data: buckets } = await supabase.storage.listBuckets();
-      const bucketExists = buckets?.some(b => b.name === 'resources');
-      
-      if (!bucketExists) {
-        console.warn("Storage bucket 'resources' not found. Attempting to create...");
-        await supabase.storage.createBucket('resources', { public: true });
-      }
-    } catch (e) {
-      console.error("Error ensuring storage bucket:", e);
-    }
+    const uploadResult = await uploadResponse.json();
 
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('resources')
-      .upload(filePath, finalFile, {
-        contentType,
-        upsert: true
-      });
-
-    if (uploadError) throw uploadError;
-
-    // 2. Get Public URL
-    const { data: { publicUrl } } = supabase.storage
-      .from('resources')
-      .getPublicUrl(filePath);
-
-    // 3. Save metadata to DB (via our API or Supabase direct)
-    // For now, we still use our API but with the URL instead of file data
+    // 2. Save metadata to DB
     const response = await apiRequest('POST', '/api/resources', {
-      fileUrl: publicUrl,
-      storagePath: filePath,
-      fileName,
-      fileType: contentType,
-      fileSize: finalFile.size,
+      fileUrl: uploadResult.fileUrl,
+      storagePath: uploadResult.storagePath,
+      fileName: uploadResult.fileName,
+      fileType: uploadResult.fileType,
+      fileSize: uploadResult.fileSize,
       ...metadata
     });
 
     if (!response.ok) {
-      // Rollback storage upload if DB fails
-      await supabase.storage.from('resources').remove([filePath]);
+      // Note: Backend might need a cleanup route for failed DB insertions
       throw new Error('Failed to save metadata to database');
     }
 
     const data = await response.json();
     return data.id;
   } catch (error) {
-    console.error("Error in Supabase migration upload:", error);
+    console.error("Error in upload process:", error);
     throw error;
   }
 }

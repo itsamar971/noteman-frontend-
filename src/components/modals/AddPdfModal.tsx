@@ -34,7 +34,8 @@ import {
   BookOpen,
   X,
   Loader2,
-  CloudUpload
+  CloudUpload,
+  Zap
 } from "lucide-react";
 
 interface AddPdfModalProps {
@@ -60,6 +61,7 @@ export default function AddPdfModal({
   const [selectedBranch, setSelectedBranch] = useState(branch);
   const [selectedSubject, setSelectedSubject] = useState(subject);
   const [availableSubjects, setAvailableSubjects] = useState<string[]>(subjects);
+  const [resourceType, setResourceType] = useState<string>("not-specified");
   const [author, setAuthor] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -83,6 +85,7 @@ export default function AddPdfModal({
     setSelectedSemester(semester);
     setSelectedBranch(branch);
     setSelectedSubject(subject);
+    setResourceType("not-specified");
     setAuthor("");
     setFile(null);
   };
@@ -162,9 +165,10 @@ export default function AddPdfModal({
         {
           title,
           semester: selectedSemester,
-          branch: selectedBranch,
+           branch: selectedBranch,
           subject: selectedSubject,
           category: type,
+          resourceType: type === "exam" ? resourceType : "not-specified",
           author: type === "textbook" ? author : "",
           pages: 0,
         }
@@ -257,6 +261,38 @@ export default function AddPdfModal({
                   </SelectContent>
                 </Select>
               </div>
+
+              {/* Resource Type (Conditional for Exams) */}
+              <AnimatePresence>
+                {type === "exam" && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="space-y-1.5"
+                  >
+                    <Label htmlFor="resourceType" className="eyebrow px-1">
+                      <Zap className="w-2.5 h-2.5" />
+                      Revision Kit Type
+                    </Label>
+                    <Select
+                      value={resourceType}
+                      onValueChange={setResourceType}
+                    >
+                      <SelectTrigger id="resourceType" className="input-dfesta w-full border-zinc-800 bg-zinc-900/50 h-11 text-xs uppercase font-bold">
+                        <SelectValue placeholder="Resource Type" />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-2xl bg-zinc-900 border-zinc-800 text-white shadow-2xl">
+                        <SelectItem value="not-specified">Standard PDF</SelectItem>
+                        <SelectItem value="formulas">📘 Formula Sheet</SelectItem>
+                        <SelectItem value="important-questions">🧠 Important QA</SelectItem>
+                        <SelectItem value="cheatsheets">⚡ Cheat Sheet</SelectItem>
+                        <SelectItem value="practice">🧪 Rapid Practice</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Semester Select */}
               <div className="space-y-1.5">

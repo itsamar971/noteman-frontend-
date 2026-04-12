@@ -1,66 +1,107 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
-import { Fingerprint, ArrowLeft, Zap } from "lucide-react";
+import { BookOpen, Brain, Zap, FlaskConical, ArrowLeft } from "lucide-react";
+import ExamCard from "@/components/ui/ExamCard";
+import ExamNavbar from "@/components/layout/ExamNavbar";
+
+const QUICK_KITS = [
+  {
+    title: "Formula Sheets",
+    description: "Rapidly review key formulas, equations, and definitions across all engineering subjects.",
+    icon: BookOpen,
+    route: "/exam-mode/search?resourceType=formulas",
+    color: "amber"
+  },
+  {
+    title: "Important Questions",
+    description: "Curated lists of high-probability exam questions and detailed step-by-step solutions.",
+    icon: Brain,
+    route: "/exam-mode/search?resourceType=important-questions",
+    color: "indigo"
+  },
+  {
+    title: "Cheat Sheets",
+    description: "One-page summaries for last-minute cram sessions and foundational concepts.",
+    icon: Zap,
+    route: "/exam-mode/search?resourceType=cheatsheets",
+    color: "emerald"
+  },
+  {
+    title: "Rapid Practice",
+    description: "Standard model papers and previous years questions to simulate the exam environment.",
+    icon: FlaskConical,
+    route: "/exam-mode/search?resourceType=practice",
+    color: "blue"
+  }
+];
 
 export default function ExamModePage() {
-  const [, setLocation] = useLocation();
-
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-6 relative overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg aspect-square bg-[#F59E0B]/5 rounded-full blur-[100px] pointer-events-none" />
+    <div className="h-screen flex flex-col bg-[#060606] text-white overflow-hidden">
+      <ExamNavbar />
       
-      <motion.div 
-        className="z-10 flex flex-col items-center text-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Animated Icon */}
-        <div className="relative mb-8 group">
-          <div className="absolute inset-0 bg-[#F59E0B] rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-          <div className="relative w-24 h-24 rounded-full border border-[#F59E0B]/30 bg-[#111] flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-[#F59E0B]/10 animate-pulse" />
-            <Fingerprint className="w-12 h-12 text-[#F59E0B]" strokeWidth={1.5} />
-          </div>
+      <main className="flex-grow flex flex-col justify-center max-w-5xl mx-auto px-10 w-full relative pt-12">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 pointer-events-none -z-10">
+          <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-amber-500/10 rounded-full blur-[110px]" />
         </div>
 
-        {/* Text */}
+        {/* Header Section */}
+        <section className="text-center mb-10 relative">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[9px] font-bold uppercase tracking-[0.2em] mb-4"
+          >
+            <Zap className="w-2.5 h-2.5 fill-amber-500" />
+            Revision Ecosystem
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-black tracking-tight mb-2"
+          >
+            <span className="bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent">
+              Exam Mode
+            </span>
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-neutral-500 text-xs md:text-sm max-w-lg mx-auto leading-relaxed font-medium"
+          >
+            A high-performance sanctuary for deep focus and exam mastery.
+          </motion.p>
+        </section>
+
+        {/* Quick Kits Grid */}
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ delay: 0.2, duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full"
         >
-          <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-zinc-500 tracking-tighter mb-4">
-            Exam Mode
-          </h1>
-          <div className="flex items-center justify-center gap-2 text-[#F59E0B] font-bold uppercase tracking-widest text-sm mb-6">
-            <Zap className="w-4 h-4 fill-[#F59E0B]" />
-            <span>Coming Soon</span>
-          </div>
+          {QUICK_KITS.map((kit, index) => (
+            <ExamCard
+              key={kit.title}
+              title={kit.title}
+              description={kit.description}
+              icon={kit.icon}
+              route={kit.route}
+              color={kit.color}
+            />
+          ))}
         </motion.div>
 
-        <motion.p 
-          className="text-zinc-400 max-w-md text-lg leading-relaxed mb-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          We are engineering the ultimate rapid-revision experience. Tailored question banks, formula sheets, and past papers instantly matching your syllabus.
-        </motion.p>
-
-        {/* Back Button */}
-        <motion.button
-          onClick={() => setLocation("/")}
-          className="group flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium transition-all"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </motion.button>
-      </motion.div>
+        {/* Specialized Minimalist Footer */}
+        <div className="mt-8 text-center opacity-40">
+          <p className="text-[9px] font-black uppercase tracking-[0.4em] text-neutral-600 cursor-default">
+            © Noteman <span className="text-amber-500/30 mx-1">•</span> Opensource <span className="text-amber-500/30 mx-1">•</span> Free Forever
+          </p>
+        </div>
+      </main>
     </div>
   );
 }
