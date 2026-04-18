@@ -33,7 +33,9 @@ export async function uploadFile(
     const formData = new FormData();
     formData.append("file", fileData, fileName);
 
-    const uploadResponse = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/resources/upload`, {
+    const isProd = import.meta.env.PROD;
+    const API_URL = isProd ? "" : (import.meta.env.VITE_API_URL || "");
+    const uploadResponse = await fetch(`${API_URL}/api/resources/upload`, {
       method: "POST",
       body: formData,
       credentials: "include",

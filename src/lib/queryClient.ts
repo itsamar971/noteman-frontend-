@@ -7,8 +7,12 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-const isProd = (import.meta as any).env.PROD;
-const API_URL = (import.meta as any).env.VITE_API_URL || (isProd ? "https://noteman-backend.onrender.com" : "");
+// In production, we ALWAYS want to use relative URLs (empty string) 
+// so that Vercel's vercel.json rewrite proxy handles the requests.
+// This prevents third-party cookie blocking by the browser.
+// We explicitly ignore VITE_API_URL in production to guarantee this safely.
+const isProd = import.meta.env.PROD;
+const API_URL = isProd ? "" : (import.meta.env.VITE_API_URL || "");
 
 /**
  * Prepends the API_URL to a relative path if it's not already a full URL.
