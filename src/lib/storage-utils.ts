@@ -36,6 +36,7 @@ export async function uploadFile(
     const uploadResponse = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/resources/upload`, {
       method: "POST",
       body: formData,
+      credentials: "include",
     });
 
     if (!uploadResponse.ok) {
