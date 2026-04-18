@@ -62,7 +62,7 @@
   }
 
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
     box-sizing: border-box;
   }
 
@@ -248,4 +248,18 @@
   .section-gap { @apply space-y-16; }
   .card-gap    { @apply space-y-6; }
   .content-pad { @apply px-6 lg:px-12 max-w-7xl mx-auto; }
+
+  /* ===================== CUSTOM SCROLLBAR ===================== */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
+  }
 }

@@ -1,6 +1,7 @@
 import { semesters, branches } from "@shared/schema";
 import { ChevronDown, Filter, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import CustomSelect from "./CustomSelect";
 
 interface FilterBarProps {
   filters: {
@@ -74,17 +75,12 @@ export default function FilterBar({ filters, setFilters }: FilterBarProps) {
           <label className="text-[11px] font-black uppercase tracking-[0.08em] text-neutral-500">
             Engineering Branch
           </label>
-          <div className="relative">
-            <select
-              value={filters.branch || ""}
-              onChange={(e) => setFilters({ ...filters, branch: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-neutral-300 outline-none appearance-none cursor-pointer focus:border-amber-500/50 transition-colors"
-            >
-              <option value="">All Branches</option>
-              {branches.map(b => <option key={b} value={b}>{b}</option>)}
-            </select>
-            <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-neutral-500 pointer-events-none" />
-          </div>
+          <CustomSelect 
+            value={filters.branch || ""}
+            onChange={(value) => setFilters({ ...filters, branch: value === "All Branches" ? "" : value })}
+            options={["All Branches", ...branches]}
+            placeholder="All Branches"
+          />
         </div>
 
         {/* Semester Filter */}
@@ -92,17 +88,12 @@ export default function FilterBar({ filters, setFilters }: FilterBarProps) {
           <label className="text-[11px] font-black uppercase tracking-[0.08em] text-neutral-500">
             Academic Semester
           </label>
-          <div className="relative">
-            <select
-              value={filters.semester || ""}
-              onChange={(e) => setFilters({ ...filters, semester: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-neutral-300 outline-none appearance-none cursor-pointer focus:border-amber-500/50 transition-colors"
-            >
-              <option value="">All Semesters</option>
-              {semesters.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
-            <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-neutral-500 pointer-events-none" />
-          </div>
+          <CustomSelect 
+            value={filters.semester || ""}
+            onChange={(value) => setFilters({ ...filters, semester: value === "All Semesters" ? "" : value })}
+            options={["All Semesters", ...semesters]}
+            placeholder="All Semesters"
+          />
         </div>
       </div>
 

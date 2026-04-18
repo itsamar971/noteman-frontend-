@@ -39,7 +39,16 @@ export async function uploadFile(
     });
 
     if (!uploadResponse.ok) {
-      throw new Error("Failed to upload file to storage");
+      let errorDetail = "Failed to upload file to storage";
+      try {
+        const errorData = await uploadResponse.json();
+        if (errorData.details) {
+          errorDetail = `Upload failed: ${errorData.details}`;
+        }
+      } catch (e) {
+        // ignore parse error and use default
+      }
+      throw new Error(errorDetail);
     }
 
     const uploadResult = await uploadResponse.json();
@@ -84,7 +93,7 @@ export async function deleteResource(id: number, storagePath?: string): Promise<
     // 2. Delete from Supabase Storage if path provided
     if (storagePath) {
       const { error } = await supabase.storage
-        .from('resources')
+        .from('notes')
         .remove([storagePath]);
       
       if (error) {

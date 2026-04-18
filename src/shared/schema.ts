@@ -1,54 +1,37 @@
-import { pgTable, text, serial, integer, boolean, timestamp } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
-import { z } from "zod";
+// ─── Frontend-safe type definitions (no drizzle/zod imports needed) ───────────
 
-// User schema for admins
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
-});
+export type User = {
+  id: number;
+  username: string;
+  password: string;
+};
 
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
-});
+export type InsertUser = {
+  username: string;
+  password: string;
+};
 
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
+export type Resource = {
+  id: number;
+  title: string;
+  fileName: string;
+  fileUrl: string;
+  storagePath: string;
+  fileSize: number;
+  fileType: string;
+  semester: string;
+  branch: string;
+  subject: string;
+  category: string;
+  author: string | null;
+  pages: number | null;
+  uploadedAt: Date | null;
+  uploadedBy: string | null;
+  viewCount: number | null;
+  resourceType: string | null;
+};
 
-// Resource schema for PDFs and textbooks
-export const resources = pgTable("resources", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  fileName: text("fileName").notNull(),
-  fileUrl: text("fileUrl").notNull(), // Direct URL to the file in Supabase Storage
-  storagePath: text("storagePath").notNull(), // Path in the bucket for deletion/updates
-  fileSize: integer("fileSize").notNull(),
-  fileType: text("fileType").notNull(), // MIME type
-  semester: text("semester").notNull(),  // e.g., "I Year I Semester"
-  branch: text("branch").notNull(), // e.g., "Civil Engineering"
-  subject: text("subject").notNull(), // e.g., "Matrices and Calculus"
-  category: text("category").notNull(), // "exam" or "textbook"
-  author: text("author"),  // Only for textbooks, nullable
-  pages: integer("pages"),  // Nullable
-  uploadedAt: timestamp("uploadedAt").defaultNow(),
-  uploadedBy: text("uploadedBy"),  // Nullable
-  viewCount: integer("viewCount").default(0), // Tracking clicks/views
-});
-
-export const resourceSchema = createInsertSchema(resources).omit({
-  id: true,
-  uploadedAt: true,
-});
-
-export const insertResourceSchema = resourceSchema.extend({
-  fileUrl: z.string().url("Valid file URL is required"),
-  storagePath: z.string().min(1, "Storage path is required"),
-});
-
-export type InsertResource = z.infer<typeof insertResourceSchema>;
-export type Resource = typeof resources.$inferSelect;
+export type InsertResource = Omit<Resource, 'id' | 'uploadedAt'>;
 
 // Semester structure
 export const semesters = [
@@ -231,13 +214,8 @@ export const subjects = Array.from(new Set(
   )
 ));
 
-// Schemas for validation
-export const semesterSchema = z.enum(semesters as [string, ...string[]]);
-export const branchSchema = z.enum(branches as [string, ...string[]]);
-export const subjectSchema = z.enum(subjects as [string, ...string[]]);
-export const categorySchema = z.enum(["exam", "textbook"]);
-
-export type Semester = z.infer<typeof semesterSchema>;
-export type Branch = z.infer<typeof branchSchema>;
-export type Subject = z.infer<typeof subjectSchema>;
-export type Category = z.infer<typeof categorySchema>;
+// Plain TypeScript type aliases (no Zod needed in frontend)
+export type Semester = string;
+export type Branch = string;
+export type Subject = string;
+export type Category = "exam" | "textbook";

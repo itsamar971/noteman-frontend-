@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import CustomSelect from "@/components/ui/CustomSelect";
 
 const EASE_OUT = [0.16, 1, 0.3, 1];
 
@@ -92,15 +93,16 @@ export default function AdminManageResources() {
                 className="w-full bg-zinc-950 border border-zinc-800 rounded-xl h-10 pl-10 pr-4 text-sm focus:border-indigo-500/50 outline-none transition-colors"
               />
             </div>
-            <select 
+            <CustomSelect 
               value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="bg-zinc-950 border border-zinc-800 rounded-xl h-10 px-3 text-xs font-bold uppercase tracking-widest outline-none focus:border-indigo-500/50"
-            >
-              <option value="all">All Types</option>
-              <option value="exam">PDFs</option>
-              <option value="textbook">Textbooks</option>
-            </select>
+              onChange={(value) => setCategoryFilter(value)}
+              options={[
+                { label: "All Types", value: "all" },
+                { label: "PDFs", value: "exam" },
+                { label: "Textbooks", value: "textbook" },
+              ]}
+              className="w-40"
+            />
           </div>
         </div>
       </div>
