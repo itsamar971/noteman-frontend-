@@ -12,8 +12,8 @@ export default function Footer() {
   const isHome = location === "/";
 
   const socialLinks = [
-    { icon: Twitter,   label: "X (Twitter)", href: "#" },
-    { icon: Instagram, label: "Instagram",   href: "#" },
+    { icon: Twitter,   label: "X (Twitter)", href: "https://x.com/NoteMannn" },
+    { icon: Instagram, label: "Instagram",   href: "https://www.instagram.com/_noteman__?igsh=MXhkY2xoaDV5YW54NQ==" },
   ];
 
   const legalLinks = [
