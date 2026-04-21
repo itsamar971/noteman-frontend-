@@ -147,6 +147,33 @@ export default function AboutPage() {
             </div>
           </motion.section>
 
+          {/* ============ THE TEAM ============ */}
+          <motion.section variants={itemVariants} className="text-center space-y-12">
+            <div className="flex justify-center">
+              <span className="eyebrow inline-block bg-zinc-900/50 px-4 py-1.5 rounded-full border border-white/10 text-zinc-400 text-xs font-bold uppercase tracking-widest">The Team</span>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="glass-card rounded-[2rem] p-8 md:p-10 border-white/5 bg-zinc-900/40 relative group overflow-hidden flex flex-col items-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="w-24 h-24 rounded-full bg-indigo-500/20 mb-6 flex items-center justify-center border border-indigo-500/30">
+                  <Users className="w-10 h-10 text-indigo-400" />
+                </div>
+                <h3 className="text-2xl font-black uppercase tracking-tight mb-2 relative z-10">N Amarnadh Reddy</h3>
+                <p className="text-indigo-400 font-bold uppercase tracking-widest text-xs mb-4 relative z-10">Founder</p>
+              </div>
+
+              <div className="glass-card rounded-[2rem] p-8 md:p-10 border-white/5 bg-zinc-900/40 relative group overflow-hidden flex flex-col items-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="w-24 h-24 rounded-full bg-emerald-500/20 mb-6 flex items-center justify-center border border-emerald-500/30">
+                  <Users className="w-10 h-10 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-black uppercase tracking-tight mb-2 relative z-10">Deepika</h3>
+                <p className="text-emerald-400 font-bold uppercase tracking-widest text-xs mb-4 relative z-10">Resource and Research Head</p>
+              </div>
+            </div>
+          </motion.section>
+
           {/* ============ OPEN SOURCE CALLOUT ============ */}
           <motion.section variants={itemVariants}>
              <div className="bg-indigo-600 rounded-[2.5rem] p-1 md:p-2 overflow-hidden group">

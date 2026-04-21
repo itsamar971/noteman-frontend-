@@ -14,8 +14,6 @@ export default function Footer() {
   const socialLinks = [
     { icon: Twitter,   label: "X (Twitter)", href: "#" },
     { icon: Instagram, label: "Instagram",   href: "#" },
-    { icon: Linkedin,  label: "LinkedIn",    href: "#" },
-    { icon: Github,    label: "GitHub",      href: "https://github.com" },
   ];
 
   const legalLinks = [
@@ -64,7 +62,6 @@ export default function Footer() {
             <li><button onClick={() => setLocation("/about")} className="text-white/50 text-sm hover:text-white transition-colors">About Us</button></li>
             <li><button onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSctIIgnPikT8HukJTp_pApE35JH6x8HhTw8jeB9JIHV_lZJTg/viewform?usp=dialog", "_blank")} className="text-white/50 text-sm hover:text-white transition-colors">Contact Us</button></li>
             <li><button onClick={() => setLocation("/contribute")} className="text-white/50 text-sm hover:text-white transition-colors">Contribute</button></li>
-            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/50 text-sm hover:text-white transition-colors">GitHub</a></li>
           </ul>
         </div>
 

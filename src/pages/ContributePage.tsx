@@ -49,7 +49,7 @@ export default function ContributePage() {
 
           <div className="text-center border-t border-white/10 pt-10">
             <a 
-              href="#" 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSctIIgnPikT8HukJTp_pApE35JH6x8HhTw8jeB9JIHV_lZJTg/viewform" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-transform hover:-translate-y-1 active:scale-95 shadow-lg shadow-violet-500/25"
